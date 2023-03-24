@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4848497781078288" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <meta charset="utf-8" >
+
+<title>Discuz 安装全流程 CentOS + Docker + PHP + Nginx + Mariadb | Gabriel&#39;s</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.gabrielme.xyz/favicon.ico?v=1679651774679">
+<link rel="stylesheet" href="https://blog.gabrielme.xyz/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HL7G4PXRW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4HL7G4PXRW');
+</script>
+
+
+    <meta name="description" content="
+1 Docker 安装
+2 MariaDB 安装
+3 PHP 安装
+4 Nginx 安装
+5 Discuz 安装
+
+5.1 安装文件部署
+5.2 安装
+5.3 GD图像处理软件安装
+5.4 附件上传失败问题
+5.5 域名 HTTPS SS..." />
+    <meta name="keywords" content="其他" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }" style="overflow-y: hidden;">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.gabrielme.xyz">
+        <img src="https://blog.gabrielme.xyz/images/avatar.png?v=1679651774679" class="site-logo">
+        <h1 class="site-title">Gabriel&#39;s</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/dyZJ2OBHR" class="site-nav">
+            NEU软工课程资源
+          </a>
+        
+      
+        
+          <a href="/CUHK_CS" class="site-nav">
+            CS课程资源
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="https://blog.csdn.net/weixin_43529394" class="site-nav" target="_blank">
+            CSDN
+          </a>
+        
+      
+        
+          <a href="/About" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Gabriel-1023" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      干就完了
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.gabrielme.xyz/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Discuz 安装全流程 CentOS + Docker + PHP + Nginx + Mariadb</h2>
+            <div class="post-date">2022-06-30</div>
+            
+            <div class="post-content" v-pre>
+              <p><ul class="markdownIt-TOC">
+<li><a href="#1-docker-%E5%AE%89%E8%A3%85">1 Docker 安装</a></li>
+<li><a href="#2-mariadb-%E5%AE%89%E8%A3%85">2 MariaDB 安装</a></li>
+<li><a href="#3-php-%E5%AE%89%E8%A3%85">3 PHP 安装</a></li>
+<li><a href="#4-nginx-%E5%AE%89%E8%A3%85">4 Nginx 安装</a></li>
+<li><a href="#5-discuz-%E5%AE%89%E8%A3%85">5 Discuz 安装</a>
+<ul>
+<li><a href="#51-%E5%AE%89%E8%A3%85%E6%96%87%E4%BB%B6%E9%83%A8%E7%BD%B2">5.1 安装文件部署</a></li>
+<li><a href="#52-%E5%AE%89%E8%A3%85">5.2 安装</a></li>
+<li><a href="#53-gd%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85">5.3 GD图像处理软件安装</a></li>
+<li><a href="#54-%E9%99%84%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98">5.4 附件上传失败问题</a></li>
+<li><a href="#55-%E5%9F%9F%E5%90%8D-https-ssl-%E9%85%8D%E7%BD%AE">5.5 域名 HTTPS SSL 配置</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<p>系统环境：CentOS 8 Stream</p>
+<p>远程SSH工具：FinalShell 4.9.4</p>
+<p>PHP版本：7.2-fpm</p>
+<p>Discuz版本：Discuz_X3.4_SC_UTF8_20220518</p>
+<h1 id="1-docker-安装">1 Docker 安装</h1>
+<p>安装 yum 工具：</p>
+<pre><code class="language-bash">yum install -y -q yum-utils
+</code></pre>
+<p>添加 docker-ce 软件源：</p>
+<pre><code class="language-bash">yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+</code></pre>
+<p>更新 yum :</p>
+<pre><code class="language-bash">yum update
+</code></pre>
+<p>安装 docker：</p>
+<pre><code class="language-bash">yum install -y docker-ce 
+# yum install docker 默认安装 podman-docker，所以要用docker-ce
+</code></pre>
+<blockquote>
+<p>虚拟机可能自带了 podman，如果再安装 docker-ce 会报错：</p>
+<pre><code class="language-bash">Problem: package podman-2:4.0.2-1.module_el8.7.0+1106+45480ee0.x86_64 requires runc &gt;= 1.0.0-57, but none of the providers can be installed
+....
+</code></pre>
+<p>podman 与 docker 功能类似，将 docker 命令中的 docker 替换为 podman 即可正常使用，若不习惯，可以卸载 podman 和 buildah：</p>
+<pre><code class="language-bash">yum rm podman buildah
+</code></pre>
+<p>再安装docker：</p>
+<pre><code class="language-bash">yum install -y docker-ce 
+# yum install docker 默认安装 podman-docker，所以要用docker-ce
+</code></pre>
+</blockquote>
+<p>启动 docker 服务：</p>
+<pre><code class="language-bash">systemctl start docker
+</code></pre>
+<h1 id="2-mariadb-安装">2 MariaDB 安装</h1>
+<p>拉取镜像：</p>
+<pre><code class="language-bash">docker pull mariadb:latest  # 此步也可不执行，直接run也会自动拉取镜像
+</code></pre>
+<p>运行容器：（命令参数顺序不对可能导致容器启动就退出）</p>
+<pre><code class="language-bash">docker run --name mymariadb -e MYSQL_ROOT_PASSWORD=你的密码 -itd mariadb
+</code></pre>
+<p><strong>参数解释</strong></p>
+<p><code>--name mariadb</code>： 容器名称为 <code>mariadb</code></p>
+<p><code>-e MYSQL_ROOT_PASSWORD=你的密码</code>：设置环境变量 <code>MYSQL_ROOT_PASSWORD</code> 为密码</p>
+<p><code>-itd</code>：<code>-i</code>, <code>-t</code>, <code>-d</code>的组合，分别为以交互模式运行容器、为容器重新分配一个伪输入终端、后台运行容器，并返回容器ID</p>
+<h1 id="3-php-安装">3 PHP 安装</h1>
+<p>拉取镜像：</p>
+<pre><code class="language-bash">docker pull php:7.2-fpm  # 此步也可不执行，直接run也会自动拉取镜像
+</code></pre>
+<p>运行容器：（注意 link 和 name 前均为两个横杠）</p>
+<pre><code class="language-bash">docker run --name  myphp -v ~/nginx/www:/www --link mymariadb:db -itd php:7.2-fpm
+</code></pre>
+<p><strong>参数解释</strong></p>
+<p><code>--name myphp-test</code>： 容器名称为 <code>myphp</code></p>
+<p><code>-v ~/nginx/www:/www</code> ：将主机的目录 <code>~/nginx/www</code> 映射到容器的 <code>/www</code>，<code>/www</code>存放 php 服务器文件，文件夹会自动创建</p>
+<p><code>--link mariadb:db</code>：连接名为 <code>mariadb </code> 的容器，并为其设置了别名 <code>db</code>，这里别名 db 就可以代表 mymariadb 容器的 ip 地址。</p>
+<blockquote>
+<p>--link 使容器之间可以通过容器名互相通信，而不再使用易发生变化的 ip 地址。</p>
+</blockquote>
+<h1 id="4-nginx-安装">4 Nginx 安装</h1>
+<p>拉取镜像：</p>
+<pre><code class="language-bash">docker pull nginx  # 此步也可不执行，直接run也会自动拉取镜像
+</code></pre>
+<p>运行容器：</p>
+<pre><code class="language-bash">docker run --name nginx -p 80:80  \
+    -v ~/nginx/www:/usr/share/nginx/html:ro \
+    -v ~/nginx/conf/conf.d:/etc/nginx/conf.d:ro \
+    --link myphp:php \
+    -itd nginx
+</code></pre>
+<p><strong>参数解释</strong></p>
+<p><code>-p 80:80</code>： 容器内 80 端口映射主机 80 端口</p>
+<p><code>-v ~/nginx/www:/usr/share/nginx/html:ro</code>：将主机的目录 <code>~/nginx/www</code> 映射到容器的 <code>/usr/share/nginx/html</code></p>
+<p><code>-v ~/nginx/conf/conf.d:/etc/nginx/conf.d:ro</code>：将主机的目录 <code>~/nginx/conf/conf.d</code> 映射到容器的 <code>/etc/nginx/conf.d</code></p>
+<p><code>--link myphp:php</code>：连接名为 <code>myphp </code>的容器，并为其设置了别名 <code>php</code></p>
+<p>在自己的电脑上新建一个 php.conf，内容如下：</p>
+<pre><code class="language-bash">server {
+    listen       80;
+    server_name  localhost;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm index.php;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass   php:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  /www/$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+}
+</code></pre>
+<p><strong>参数解释</strong></p>
+<p><code>fastcgi_pass   php:9000;</code> ：<code>php</code> 与之前启动 Nginx 容器时的参数 <code>--link myphp:php</code> 中设置的别名 <code>php</code> 保持一致，即 <code>php</code> 代表 myphp 容器的 ip 地址。<code>9000</code> 为 myphp 容器中 php 服务器默认的端口号。</p>
+<blockquote>
+<p>fastcgi_pass：Nginx本身不能处理PHP，它只是个 web 服务器，当接收到请求后，如果是 php 请求，则发给php解释器处理，并把结果返回给客户端。nginx 一般是把请求发 fastcgi 管理进程处理， fascgi 管理进程选择 cgi 子进程处理结果并返回给 Nginx。</p>
+</blockquote>
+<p>将自己电脑上的 php.conf 利用 FinalShell 上传至服务器的 <code>~/nginx/conf/conf.d/</code> 位置。</p>
+<h1 id="5-discuz-安装">5 Discuz 安装</h1>
+<h2 id="51-安装文件部署">5.1 安装文件部署</h2>
+<p>从官网下载 Discuz 安装包，这里使用的是 <a href="https://www.dismall.com/forum.php?mod=attachment&amp;aid=MTA0fDY5OGNjYWRifDE2NTY1NjMwMDR8MHw3Mw%3D%3D">Discuz_X3.4_SC_UTF8_20220518.zip</a>，附件所在帖子链接为：<a href="https://www.dismall.com/thread-73-1-1.html">https://www.dismall.com/thread-73-1-1.html</a>。</p>
+<p>打开路径 `~/nginx/www</p>
+<pre><code class="language-bash">cd ~/nginx/www
+</code></pre>
+<p>利用 FinalShell 将安装包上传至 <code>~/nginx/www</code>。</p>
+<p>解压安装包：</p>
+<pre><code class="language-bash">unzip Discuz_X3.4_SC_UTF8_20220518.zip
+</code></pre>
+<p>将其 upload 文件夹的内容个复制到 <code>~/nginx/www</code>：</p>
+<pre><code class="language-bash">mv ./Discuz_X3.4_SC_UTF8_20220518/upload/* ./
+</code></pre>
+<p>删除剩余文件：</p>
+<pre><code class="language-bash">rm -rf ./Discuz_X3.4_SC_UTF8_20220518
+</code></pre>
+<p>删除安装包：</p>
+<pre><code class="language-bash">rm -f ./Discuz_X3.4_SC_UTF8_20220518.zip
+</code></pre>
+<p>给 <code>~/nginx/www/</code> 赋最高权限：</p>
+<pre><code class="language-bash">chmod 777 -r ~/nginx/www/  # 无这一步，Discuz安装会报一堆权限问题
+</code></pre>
+<p>重启所有容器：</p>
+<pre><code class="language-bash">docker restart mymariadb nginx myphp
+</code></pre>
+<h2 id="52-安装">5.2 安装</h2>
+<p>使用浏览器访问服务器的 ip 地址，即 Discuz 网站，进入 Discuz 安装阶段，同意授权协议后，显示安装环境检查界面：</p>
+<figure data-type="image" tabindex="1"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630125842375.png" alt="" loading="lazy"></figure>
+<p>如果之前步骤进行正确，除如下 mysql_connect() 函数依赖问题外，其他项目均正常。</p>
+<figure data-type="image" tabindex="2"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630125917495.png" alt="image-20220630125917495" loading="lazy"></figure>
+<p>下边解决 mysql_connect() 函数依赖问题，进入启动的 myphp 容器：</p>
+<pre><code class="language-bash">docker exec -it myphp bash
+</code></pre>
+<p>进入目录 bin：</p>
+<pre><code class="language-bash">cd /usr/local/bin
+</code></pre>
+<p>安装扩展 pdo_mysql：</p>
+<pre><code class="language-bash">./docker-php-ext-install pdo_mysql
+</code></pre>
+<p>安装扩展 mysqli：</p>
+<pre><code class="language-bash">./docker-php-ext-install mysqli
+</code></pre>
+<p>退出 myphp 容器：</p>
+<pre><code class="language-bash">exit
+</code></pre>
+<p>重启所有容器：</p>
+<pre><code class="language-bash">docker restart mymariadb nginx myphp
+</code></pre>
+<p>重新访问 Discuz 网站，显示函数依赖已正常：</p>
+<figure data-type="image" tabindex="3"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630130226812.png" alt="image-20220630130226812" loading="lazy"></figure>
+<p>进入下一步，运行环境设置，笔者不太清楚两选项区别，选择了含 UCenter Server 安装，有备无患。</p>
+<figure data-type="image" tabindex="4"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630130257792.png" alt="image-20220630130257792" loading="lazy"></figure>
+<p>进入下一步，安装数据库：</p>
+<figure data-type="image" tabindex="5"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630130842881.png" alt="image-20220630130842881" loading="lazy"></figure>
+<p><strong>参数解释</strong></p>
+<p>数据库服务器地址： <code>db</code> ，即第 3 节 PHP 安装中连接 mymariadb 容器设置的别名 <code>db</code></p>
+<p>数据库用户名：root，即默认</p>
+<p>数据库密码：第 2 节MariaDB 安装中设置的 MYSQL_ROOT_PASSWORD 环境变量值</p>
+<p>数据库名、数据表前缀：无特殊需要保持默认即可</p>
+<p>其他信息根据自身情况填写即可。点击下一步之后自动安装，片刻即好，之后可进入 Discuz 网站，使用安装过程填写的管理员信息登录（初次可设置验证问题提高账户安全性）。</p>
+<h2 id="53-gd图像处理软件安装">5.3 GD图像处理软件安装</h2>
+<p>此时网站还存在一个问题，在 Discuz 后台的全局-&gt;上传设置，点击“预览略缩图效果”，会显示如下错误：</p>
+<figure data-type="image" tabindex="6"><img src="https://blog.gabrielme.xyz/post-images/Discuz/1534602779361008433.png" alt="服务器缺少处理图片所需的功能，无法处理" loading="lazy"></figure>
+<p>从下图位置进入管理中心，使用管理员账号登录后台：</p>
+<figure data-type="image" tabindex="7"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630131611138.png" alt="image-20220630131611138" loading="lazy"></figure>
+<p>首页会显示如下警告：</p>
+<figure data-type="image" tabindex="8"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630131811313.png" alt="image-20220630131811313" loading="lazy"></figure>
+<p>下边安装 GD ，进入 myphp 容器：</p>
+<pre><code class="language-bash">docker exec -it myphp bash
+</code></pre>
+<p>需要将 apt-get 软件安装源替换，才能找到后边要用的安装包。</p>
+<p>软件源替换方法如下：</p>
+<blockquote>
+<p>备份原来的源文件：</p>
+<pre><code class="language-bash">cp  /etc/apt/sources.list /etc/apt/sources.list.bak
+</code></pre>
+<p>在容器内查看系统版本：</p>
+<pre><code class="language-bash">cat /etc/os-release
+</code></pre>
+<p>显示如下信息，说明容器内的环境为 Debian buster 10。</p>
+<figure data-type="image" tabindex="9"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630132536956.png" alt="image-20220630132536956" loading="lazy"></figure>
+<p>打开清华大学镜像网站<code>https://mirrors.tuna.tsinghua.edu.cn/help/debian/</code>，找到对应版本的国内源：</p>
+<figure data-type="image" tabindex="10"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630132642952.png" alt="image-20220630132642952" loading="lazy"></figure>
+<p>复制网页下方代码，Debian buster如下：</p>
+<pre><code class="language-bash"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free
+</code></pre>
+<p>在自己的电脑上新建 <code>source.list</code>文件，粘贴清华源到文件里，借助 FinalShell 先将文件上传至 <code>~/nginx/www</code>（为了可以从容器中的 <code>/www</code> 访问），然后移动到软件源所在位置：</p>
+<pre><code class="language-bash">mv /www/sources.list /etc/apt/sources.list
+</code></pre>
+<p>更新：</p>
+<pre><code class="language-bash">apt-get update
+</code></pre>
+</blockquote>
+<p>安装依赖库：</p>
+<pre><code class="language-bash">apt install -y libwebp-dev libjpeg-dev libpng-dev libfreetype6-dev
+</code></pre>
+<p>解压源码：</p>
+<pre><code class="language-bash">docker-php-source extract
+</code></pre>
+<p>进入gd源码文件夹：</p>
+<pre><code class="language-bash">cd /usr/src/php/ext/gd
+</code></pre>
+<p>准备编译：</p>
+<pre><code class="language-bash">docker-php-ext-configure gd --with-webp-dir=/usr/include/webp --with-jpeg-dir=/usr/include --with-png-dir=/usr/include --with-freetype-dir=/usr/include/freetype2
+</code></pre>
+<p>编译安装：</p>
+<pre><code class="language-bash">docker-php-ext-install gd
+</code></pre>
+<p>检查扩展是否安装成功：</p>
+<pre><code class="language-bash">php -m | grep gd
+</code></pre>
+<p>显示 gd 即表示安装成功：</p>
+<figure data-type="image" tabindex="11"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630134151984.png" alt="image-20220630134151984" loading="lazy"></figure>
+<p>退出容器：</p>
+<pre><code class="language-bash">exit
+</code></pre>
+<p>重启所有容器：</p>
+<pre><code class="language-bash">docker restart mymariadb nginx myphp
+</code></pre>
+<p>重新登录 Discuz 后台后，运行环境检测显示一切正常：</p>
+<figure data-type="image" tabindex="12"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630134340548.png" alt="image-20220630134340548" loading="lazy"></figure>
+<p>略缩图预览正常：</p>
+<figure data-type="image" tabindex="13"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630134647408.png" alt="image-20220630134647408" loading="lazy"></figure>
+<h2 id="54-附件上传失败问题">5.4 附件上传失败问题</h2>
+<p>换比较小的文件试试，需要修改 php 最大上传大小，docker 里边不是修改 php.ini，先挖个坑，以后补方法。</p>
+<h2 id="55-域名-https-ssl-配置">5.5 域名 HTTPS SSL 配置</h2>
+<p><code>~/nginx/conf/conf.d</code> 配置修改：</p>
+<pre><code class="language-bash">server {
+	listen 443 ssl;
+	server_name abc.top; # 你的域名
+	root /usr/share/nginx/html;
+	ssl_certificate  /etc/nginx/conf.d/ssl/domain.cert.pem; # 证书路径
+	ssl_certificate_key /etc/nginx/conf.d/ssl/private.key.pem; # 秘钥路径
+	index  index.html index.htm index.php;
+	
+	location ~ \.php$ {
+		fastcgi_pass   php:9000;
+		fastcgi_index  index.php;
+		fastcgi_param  SCRIPT_FILENAME  /www/$fastcgi_script_name;
+		include        fastcgi_params;
+	}
+	
+	location / {
+#		index  index.html index.htm index.php;
+	}
+	
+	error_page   500 502 503 504  /50x.html;
+	location = /50x.html {
+		root   /usr/share/nginx/html;
+	}
+}
+server {
+	listen 80;
+	server_name abc.top; # 你的域名
+	rewrite ^(.*)$ https://$host$1 permanent;
+}
+</code></pre>
+<p>后台配置修改：</p>
+<ul>
+<li>
+<p>在后台 – 全局 – 网站 URL 填写</p>
+<p>https://你的网址</p>
+</li>
+<li>
+<p>在后台 站长 – UCenter 设置 – UCenter 访问地址填写<br>
+https://你的网址/uc_server</p>
+</li>
+<li>
+<p>在后台 – UCenter – 应用管理 – 点右边的编辑 – 应用的主 URL 填写</p>
+<p>https://你的网址</p>
+</li>
+</ul>
+<p>检查网址是否能正常访问，<strong>不能再</strong>进行下一步修改，否则不需要：</p>
+<p>修改3个源文件（修改前请记得做好文件备份）：</p>
+<ul>
+<li>
+<p>source/class/discuz/discuz_application.php （大概在第 190 行处）</p>
+<p>查找： <code>\$_G['isHTTPS'] =</code></p>
+<p>这一行直接修改为： `$_G['isHTTPS'] = true;`</p>
+</li>
+<li>
+<p>uc_server/avatar.php（约第13行处）</p>
+<p>查找：</p>
+<pre><code class="language-php">define('UC_API', strtolower(($_SERVER['HTTPS'] == 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'))));
+</code></pre>
+<p>修改为：</p>
+<pre><code class="language-php">define('UC_API', strtolower(($_SERVER['SERVER_PORT'] == 443 || $_SERVER['HTTPS'] == 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'))));
+</code></pre>
+</li>
+<li>
+<p>template/default/common/header.htm</p>
+<p>查找： <code>http://</code>　全部替换为： <code>https://</code></p>
+</li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.gabrielme.xyz/ApctfAbqI/" class="tag">
+                    其他
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.gabrielme.xyz/ML-16-3/">
+                  <h3 class="post-title">
+                    [机器学习] 16-3 推荐系统-协同过滤
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '8e52ba68bfaa8403de1e',
+        clientSecret: '65b9a40efca110a1948a2223dd5478e96f34599a',
+        repo: 'GitHubPageComment',
+        owner: 'Gabriel-1023',
+        admin: ['Gabriel-1023'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

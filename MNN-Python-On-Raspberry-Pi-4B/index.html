@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4848497781078288" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <meta charset="utf-8" >
+
+<title>[树莓派] 在树莓派4B上手动编译whl文件安装python的MNN包 | Gabriel&#39;s</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.gabrielme.xyz/favicon.ico?v=1679651774679">
+<link rel="stylesheet" href="https://blog.gabrielme.xyz/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HL7G4PXRW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4HL7G4PXRW');
+</script>
+
+
+    <meta name="description" content="本文内容来自ling9601在MNN GitHub中issues_1051的回答，加上笔者实测过程中的一些注释。
+由于MNN没有用于树莓派4B的pip安装包，所以需要在树莓派上使用python版的MNN的话可以自己编译whl文件，然后安装。..." />
+    <meta name="keywords" content="树莓派" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }" style="overflow-y: hidden;">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.gabrielme.xyz">
+        <img src="https://blog.gabrielme.xyz/images/avatar.png?v=1679651774679" class="site-logo">
+        <h1 class="site-title">Gabriel&#39;s</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/dyZJ2OBHR" class="site-nav">
+            NEU软工课程资源
+          </a>
+        
+      
+        
+          <a href="/CUHK_CS" class="site-nav">
+            CS课程资源
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="https://blog.csdn.net/weixin_43529394" class="site-nav" target="_blank">
+            CSDN
+          </a>
+        
+      
+        
+          <a href="/About" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Gabriel-1023" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      干就完了
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.gabrielme.xyz/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">[树莓派] 在树莓派4B上手动编译whl文件安装python的MNN包</h2>
+            <div class="post-date">2022-04-22</div>
+            
+            <div class="post-content" v-pre>
+              <p>本文内容来自<a href="https://github.com/ling9601">ling9601</a>在<a href="https://github.com/alibaba/MNN">MNN GitHub</a>中<a href="https://github.com/alibaba/MNN/issues/1051">issues_1051</a>的回答，加上笔者实测过程中的一些注释。</p>
+<p>由于MNN没有用于树莓派4B的pip安装包，所以需要在树莓派上使用python版的MNN的话可以自己编译whl文件，然后安装。</p>
+<p><strong>或者直接尝试安装笔者编译的whl包：<a href="https://github.com/Gabriel-1023/Basement/blob/main/MNN-1.1.3-cp37-cp37m-manylinux2014_armv7l.whl">点这里</a>，安装失败再自行编译。</strong></p>
+<p>笔者使用的树莓派4B系统为<code>2021-05-07-raspios-buster-armhf</code> ，内存4GB。</p>
+<ol>
+<li>
+<p>安装编译依赖</p>
+<pre><code class="language-bash">sudo apt-get install cmake libprotobuf-dev protobuf-compiler
+</code></pre>
+</li>
+<li>
+<p>克隆MNN源代码</p>
+<pre><code class="language-bash">git clone https://github.com/alibaba/MNN
+</code></pre>
+<p>原文说<a href="https://github.com/RangiLyu/nanodet/issues/92">RangiLyu/nanodet#92</a>用了1.0.0的版本，但是<a href="https://github.com/ling9601">ling9601</a>发现当时的最新版本1.1.3更快并且支持多线程，所以他用了当时最新版本1.1.3。笔者实测现在最新版本1.2.7编译会报错（可能因为后边python版本的原因没有编译成功，但是1.1.3编译出来的whl已经能够正常使用，有余力的朋友可以试着编译一下最新版本）。</p>
+<p>所以切换到1.1.3版本：</p>
+<pre><code class="language-bash">git checkout 1.1.3
+</code></pre>
+</li>
+<li>
+<p>编译准备：</p>
+<pre><code class="language-bash">cd /path/to/MNN  # 切换到MNN根目录即可
+./schema/generate.sh
+mkdir pymnn_build
+</code></pre>
+</li>
+<li>
+<p>为python wheel的搭建搭建依赖：</p>
+<p>如果同时编译<code>MNNConvert</code>，会报下边的错误，并且没有解决方案。</p>
+<pre><code class="language-bash">[100%] Linking CXX executable ../../MNNConvert
+/usr/bin/ld: /usr/local/lib/libprotobuf.a(arena.o): in function google::protobuf::internal::ArenaImpl::Init(bool)': arena.cc:(.text+0x3ac): undefined reference to __atomic_fetch_add_8'
+collect2: error: ld returned 1 exit status
+</code></pre>
+<p>所以不编译 <code>MNNConvert</code>。修改下边的代码</p>
+<pre><code class="language-python">MNN/pymnn/pip_package/build_deps.py
+...
+ elif IS_LINUX:
+     os.system('cmake -DMNN_BUILD_CONVERTER=on -DMNN_BUILD_TRAIN=ON -DCMAKE_BUILD_TYPE=Release\
+         -DMNN_BUILD_SHARED_LIBS=OFF -DMNN_AAPL_FMWK=OFF -DMNN_SEP_BUILD=OFF\
+         -DMNN_USE_THREAD_POOL=OFF .. &amp;&amp; make MNN MNNTrain MNNConvert  -j4')
+...
+</code></pre>
+<p>改为：</p>
+<pre><code class="language-python">MNN/pymnn/pip_package/build_deps.py
+...
+    elif IS_LINUX:
+        os.system('cmake -DMNN_BUILD_CONVERTER=on -DMNN_BUILD_TRAIN=ON -DCMAKE_BUILD_TYPE=Release\
+            -DMNN_BUILD_SHARED_LIBS=OFF -DMNN_AAPL_FMWK=OFF -DMNN_SEP_BUILD=OFF\
+            -DMNN_USE_THREAD_POOL=OFF .. &amp;&amp; make MNN MNNTrain -j4')
+...
+</code></pre>
+<p>就是把最后的 <code>MNNConvert</code>删去。</p>
+<p>使用 <code>build_deps.py</code> 编译依赖：</p>
+<pre><code class="language-bash">cd pymnn/pip_package
+python build_deps.py  
+#这一步建议在虚拟环境下运行，确保python指的是python3而不是2.7，我发现即便把该命令中的python改为python3，运行的时候，代码会自己找到2.7版本的python去编译，显示Found PythonInterp: /usr/bin/python (found version &quot;2.7.16&quot;)，最后得到的whl文件是MNN-1.1.3-cp27-cp27m-manylinux2014_armv7l.whl而不是MNN-1.1.3-cp37-cp37m-manylinux2014_armv7l.whl，pip install直接显示不支持。
+</code></pre>
+</li>
+<li>
+<p>编译 wheel</p>
+<p>修改代码中的平台：</p>
+<pre><code class="language-python">MNN/pymnn/pip_package/build_wheel.py
+...
+    if IS_LINUX:
+        os.system('python setup.py bdist_wheel --plat-name=manylinux1_x86_64')
+...
+</code></pre>
+<p>改为：</p>
+<pre><code class="language-python">pymnn/pip_package/build_wheel.py
+...
+    if IS_LINUX:
+        os.system('python setup.py bdist_wheel --plat-name=manylinux2014_armv7l')
+...
+# 这一步和我改的时候的代码不太一样，目前看直接改成这个plat-name就可以
+</code></pre>
+<p>不能编译<code>_tools</code>，要把下列代码注释掉：</p>
+<pre><code class="language-python">pymnn/pip_package/setup.py
+...
+    tools = Extension(&quot;_tools&quot;,\
+                    libraries=tools_libraries,\
+                    sources=tools_sources,\
+                    language='c++',\
+                    extra_compile_args=tools_compile_args + extra_compile_args,\
+                    include_dirs=tools_include_dirs,\
+                    library_dirs=tools_library_dirs,\
+                    extra_link_args=tools_extra_link_args +tools_link_args\
+                        + [make_relative_rpath('lib')])
+    extensions.append(tools)
+...
+</code></pre>
+<p>运行编译：</p>
+<pre><code class="language-bash">python build_wheel.py --version 1.1.3  
+# 原文没有version参数，报错了，可能是代码发生变化了吧
+# 这一步同样虚拟环境，确保python代表python3
+# 运行的时候numpy报错了。。奇怪，但是wheel包还是生成了
+</code></pre>
+</li>
+<li>
+<p>安装wheel文件</p>
+<pre><code class="language-bash">pip install pymnn/pip_package/dist/MNN-1.1.3-cp37-cp37m-manylinux2014_armv7l.whl
+</code></pre>
+</li>
+<li>
+<p>测试MNN包的安装</p>
+<pre><code>import MNN
+</code></pre>
+<p>因为没有编译 <code>_tools</code>，所以会出现以下报错：</p>
+<pre><code class="language-bash">&gt;&gt;&gt; import MNN
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;/home/pi/.virtualenvs/mnn/lib/python3.7/site-packages/MNN/__init__.py&quot;, line 9, in &lt;module&gt;
+    from . import tools
+  File &quot;/home/pi/.virtualenvs/mnn/lib/python3.7/site-packages/MNN/tools/__init__.py&quot;, line 1, in &lt;module&gt;
+    from . import mnn, mnnops, mnnquant, mnnconvert 
+  File &quot;/home/pi/.virtualenvs/mnn/lib/python3.7/site-packages/MNN/tools/mnnquant.py&quot;, line 8, in &lt;module&gt;
+    import _tools as Tools
+ModuleNotFoundError: No module named '_tools'
+</code></pre>
+<p>修改python程序中的以下文件：</p>
+<pre><code class="language-python">/lib/python3.7/site-packages/MNN/__init__.py
+...
+from . import tools
+...
+</code></pre>
+<p>重新测试 <code>import MNN</code>，没问题了</p>
+<p>啊啊啊啊啊啊啊啊啊啊啊啊啊成功了！！！！！！！！！啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</p>
+<p>推理是没有问题的，使用1920*1080的视频帧率为2 FPS，网络摄像头640*480的视频帧率为8.4 FPS，比使用yolov5n模型识别好了数十倍，yolov5n模型不管什么视频帧率都约为0.2 FPS，比ppt还卡。</p>
+<p>数据比较主观，可以自行实验。</p>
+</li>
+</ol>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.gabrielme.xyz/-YL4a4134/" class="tag">
+                    树莓派
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.gabrielme.xyz/NEU-GPA-Helper/">
+                  <h3 class="post-title">
+                    NEU综合教务系统留学4分制成绩小助手 油猴脚本
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '8e52ba68bfaa8403de1e',
+        clientSecret: '65b9a40efca110a1948a2223dd5478e96f34599a',
+        repo: 'GitHubPageComment',
+        owner: 'Gabriel-1023',
+        admin: ['Gabriel-1023'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

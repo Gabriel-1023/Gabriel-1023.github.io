@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4848497781078288" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <meta charset="utf-8" >
+
+<title>[数据库][数据结构] B树与B+树 | Gabriel&#39;s</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.gabrielme.xyz/favicon.ico?v=1679651774679">
+<link rel="stylesheet" href="https://blog.gabrielme.xyz/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HL7G4PXRW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4HL7G4PXRW');
+</script>
+
+
+    <meta name="description" content="1. B树
+1.1 B树插入
+插入26，得到下图结果，插入后的终端结点中的关键字数大于m-1，需对结点进行分裂
+
+左部26，中间值为30，右部为37，左部放在原来的结点，右部放入新的结点，中间值则插入到父结点中，并且父结点会产生一个新的指针..." />
+    <meta name="keywords" content="数据结构,数据库" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }" style="overflow-y: hidden;">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.gabrielme.xyz">
+        <img src="https://blog.gabrielme.xyz/images/avatar.png?v=1679651774679" class="site-logo">
+        <h1 class="site-title">Gabriel&#39;s</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/dyZJ2OBHR" class="site-nav">
+            NEU软工课程资源
+          </a>
+        
+      
+        
+          <a href="/CUHK_CS" class="site-nav">
+            CS课程资源
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="https://blog.csdn.net/weixin_43529394" class="site-nav" target="_blank">
+            CSDN
+          </a>
+        
+      
+        
+          <a href="/About" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Gabriel-1023" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      干就完了
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.gabrielme.xyz/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">[数据库][数据结构] B树与B+树</h2>
+            <div class="post-date">2022-07-27</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="1-b树">1. B树</h1>
+<h2 id="11-b树插入">1.1 B树插入</h2>
+<p>插入26，得到下图结果，插入后的终端结点中的关键字数大于m-1，需对结点进行分裂</p>
+<figure data-type="image" tabindex="1"><img src="https://blog.gabrielme.xyz/post-images/B&amp;B+Tree/1.png" alt="" loading="lazy"></figure>
+<p>左部26，中间值为30，右部为37，左部放在原来的结点，右部放入新的结点，中间值则插入到父结点中，并且父结点会产生一个新的指针，指向新的结点的位置，如下图所示：</p>
+<figure data-type="image" tabindex="2"><img src="https://blog.gabrielme.xyz/post-images/B&amp;B+Tree/2.png" alt="" loading="lazy"></figure>
+<h2 id="12-b树删除">1.2 B树删除</h2>
+<p>来源：<a href="https://juejin.cn/post/6844903673668042759">https://juejin.cn/post/6844903673668042759</a></p>
+<figure data-type="image" tabindex="3"><img src="https://blog.gabrielme.xyz/post-images/B&amp;B+Tree/3.webp" alt="" loading="lazy"></figure>
+<p>情况一：删除“I”，直接删除</p>
+<p>情况二：删除“G” （下图），删除后可向<strong>左或右邻节点借</strong></p>
+<figure data-type="image" tabindex="4"><img src="https://blog.gabrielme.xyz/post-images/B&amp;B+Tree/3.webp" alt="" loading="lazy"></figure>
+<p>​				删除“L”（下图）</p>
+<figure data-type="image" tabindex="5"><img src="https://blog.gabrielme.xyz/post-images/B&amp;B+Tree/5.webp" alt="" loading="lazy"></figure>
+<p>情况三：删除“G”（下图），左右邻节点<strong>都不能借</strong>，父节点拿下来合并</p>
+<figure data-type="image" tabindex="6"><img src="https://blog.gabrielme.xyz/post-images/B&amp;B+Tree/6.webp" alt="" loading="lazy"></figure>
+<p>情况四：删除“C”，删除后影响平衡</p>
+<figure data-type="image" tabindex="7"><img src="https://blog.gabrielme.xyz/post-images/B&amp;B+Tree/4.webp" alt="" loading="lazy"></figure>
+<p>情况五：删除“M”，删除非叶子节点</p>
+<figure data-type="image" tabindex="8"><img src="https://blog.gabrielme.xyz/post-images/B&amp;B+Tree/8.webp" alt="" loading="lazy"></figure>
+<p>情况六：删除“D”，删除根节点</p>
+<figure data-type="image" tabindex="9"><img src="https://blog.gabrielme.xyz/post-images/B&amp;B+Tree/7.webp" alt="" loading="lazy"></figure>
+<h1 id="2-mysql-为什么用btree">2. MySQL 为什么用B+Tree</h1>
+<p>来源：<a href="https://juejin.cn/post/7081065180301361183">https://juejin.cn/post/7081065180301361183</a></p>
+<p>二叉树：性能为log2N，当N比较大的时候，数的深度比较大，严重依赖磁盘I/O，最差会退化为链表</p>
+<p>B树：需要中序遍历查找</p>
+<p>B+树：</p>
+<figure data-type="image" tabindex="10"><img src="https://blog.gabrielme.xyz/post-images/B&amp;B+Tree/9.webp" alt="" loading="lazy"></figure>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.gabrielme.xyz/DataStructure/" class="tag">
+                    数据结构
+                  </a>
+                
+                  <a href="https://blog.gabrielme.xyz/DB/" class="tag">
+                    数据库
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.gabrielme.xyz/Discuz/">
+                  <h3 class="post-title">
+                    Discuz 安装全流程 CentOS + Docker + PHP + Nginx + Mariadb
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '8e52ba68bfaa8403de1e',
+        clientSecret: '65b9a40efca110a1948a2223dd5478e96f34599a',
+        repo: 'GitHubPageComment',
+        owner: 'Gabriel-1023',
+        admin: ['Gabriel-1023'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

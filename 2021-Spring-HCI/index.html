@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4848497781078288" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <meta charset="utf-8" >
+
+<title>2021 春季学期 人机交互的软件工程方法 课程资料 | Gabriel&#39;s</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.gabrielme.xyz/favicon.ico?v=1679651774679">
+<link rel="stylesheet" href="https://blog.gabrielme.xyz/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HL7G4PXRW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4HL7G4PXRW');
+</script>
+
+
+    <meta name="description" content="
+成绩分配
+第一次测验
+第二次测验
+
+2.1 题目：分析并给出一个Problem和一个Good Feature的UAR
+2.2 Problem 参考
+2.3 UAR 示例
+2.4 启发式的10条规则
+
+
+期末考试 回忆
+
+一、 选择题
+二、..." />
+    <meta name="keywords" content="NEU 软件学院 课程资源" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }" style="overflow-y: hidden;">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.gabrielme.xyz">
+        <img src="https://blog.gabrielme.xyz/images/avatar.png?v=1679651774679" class="site-logo">
+        <h1 class="site-title">Gabriel&#39;s</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/dyZJ2OBHR" class="site-nav">
+            NEU软工课程资源
+          </a>
+        
+      
+        
+          <a href="/CUHK_CS" class="site-nav">
+            CS课程资源
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="https://blog.csdn.net/weixin_43529394" class="site-nav" target="_blank">
+            CSDN
+          </a>
+        
+      
+        
+          <a href="/About" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Gabriel-1023" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      干就完了
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.gabrielme.xyz/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">2021 春季学期 人机交互的软件工程方法 课程资料</h2>
+            <div class="post-date">2021-03-19</div>
+            
+            <div class="post-content" v-pre>
+              <p><ul class="markdownIt-TOC">
+<li><a href="#%E6%88%90%E7%BB%A9%E5%88%86%E9%85%8D">成绩分配</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%B5%8B%E9%AA%8C">第一次测验</a></li>
+<li><a href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%B5%8B%E9%AA%8C">第二次测验</a>
+<ul>
+<li><a href="#21-%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90%E5%B9%B6%E7%BB%99%E5%87%BA%E4%B8%80%E4%B8%AAproblem%E5%92%8C%E4%B8%80%E4%B8%AAgood-feature%E7%9A%84uar">2.1 题目：分析并给出一个Problem和一个Good Feature的UAR</a></li>
+<li><a href="#22-problem-%E5%8F%82%E8%80%83">2.2 Problem 参考</a></li>
+<li><a href="#23-uar-%E7%A4%BA%E4%BE%8B">2.3 UAR 示例</a></li>
+<li><a href="#24-%E5%90%AF%E5%8F%91%E5%BC%8F%E7%9A%8410%E6%9D%A1%E8%A7%84%E5%88%99">2.4 启发式的10条规则</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95-%E5%9B%9E%E5%BF%86">期末考试 回忆</a>
+<ul>
+<li><a href="#%E4%B8%80-%E9%80%89%E6%8B%A9%E9%A2%98">一、 选择题</a></li>
+<li><a href="#%E4%BA%8C-%E5%88%A4%E6%96%AD%E9%A2%98">二、 判断题</a></li>
+<li><a href="#%E4%B8%89-%E7%AE%80%E7%AD%94%E9%A2%98">三、 简答题</a></li>
+<li><a href="#%E5%9B%9B-%E5%A4%A7%E9%A2%98">四、 大题</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%AA%E4%BA%BA%E4%BD%9C%E4%B8%9A%E8%A6%81%E6%B1%82">个人作业要求</a></li>
+<li><a href="#uar%E6%8A%A5%E5%91%8A-%E8%AF%B4%E6%98%8E%E5%92%8C%E6%A8%A1%E7%89%88">UAR报告 说明和模版</a></li>
+</ul>
+</p>
+<h1 id="成绩分配">成绩分配</h1>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>分数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>课上测验</td>
+<td>10分×2次</td>
+</tr>
+<tr>
+<td>个人作业</td>
+<td>10分</td>
+</tr>
+<tr>
+<td>小组讨论</td>
+<td>10分×2次</td>
+</tr>
+<tr>
+<td>期末考试（开卷）</td>
+<td>50分</td>
+</tr>
+</tbody>
+</table>
+<p>期末考试内容：</p>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>分数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单选题</td>
+<td>2分×5题</td>
+</tr>
+<tr>
+<td>判断题</td>
+<td>2分×5题</td>
+</tr>
+<tr>
+<td>简答题</td>
+<td>10分×2题</td>
+</tr>
+<tr>
+<td>综合题</td>
+<td>60分 3题</td>
+</tr>
+</tbody>
+</table>
+<p>ps：授课老师 zjz，期末考试第二章不考。</p>
+<h1 id="第一次测验">第一次测验</h1>
+<p><strong>Prototyping</strong></p>
+<p>In the year 2100 all cars use electric energy only.<br>
+At power stations, cars now fill up by themselves, there is no need to get out of the car anymore.<br>
+A new type of interface is needed through which the car driver can specify how much electric energy the car should get. The input device for this information is a <strong>CD-sized round</strong> <em>touch-screen</em> display that is placed inside the car.</p>
+<p><strong>原型制作</strong></p>
+<p>在2100年，所有汽车仅使用电能。在发电站，汽车现在可以自己装满，不再需要离开汽车。我们需要一种新型的界面，使得汽车驾驶员可以通过该界面<strong>指定</strong>汽车应获取多少电能。用于此信息的输入设备是<strong>CD大小的圆形触摸屏</strong>显示器，该显示器放置在车内。</p>
+<h1 id="第二次测验">第二次测验</h1>
+<h2 id="21-题目分析并给出一个problem和一个good-feature的uar">2.1 题目：分析并给出一个Problem和一个Good Feature的UAR</h2>
+<figure data-type="image" tabindex="1"><img src="https://blog.gabrielme.xyz/post-images/1647678132178.png" alt="" loading="lazy"></figure>
+<h2 id="22-problem-参考">2.2 Problem 参考</h2>
+<table>
+<thead>
+<tr>
+<th>Identifier</th>
+<th>HE1—Problem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>历史购物车搜索需要用户回忆</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Heuristic: Recognition, not recall  界面方面：整个界面最下方的返回历史购物车，  如下图所示。<img src="https://blog.gabrielme.xyz/post-images/1647678174086.png" alt="" loading="lazy"></td>
+</tr>
+<tr>
+<td>Explanation</td>
+<td>在通常情况下，如果要搜索历史记录，为了避免让用户痛苦地回忆，会把历史记录都列出来，以让用户通过点击来选择加载哪一条历史记录。而在这里，给出一个文本输入框，期望让用户自己想起来曾经存过的购物车名字，而不给任何提示信息，用户很可能根本已经想不起来购物车的正确名字了。</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>这无论对于新用户还是有使用经验的老用户来说都会存在一定问题。对于新用户来说问题较为严重，因为他们第一次使用历史购物车搜索功能时，不知道还要自己输入购物车名字，因此之前没有特意记过名字，所以会导致根本无法使用此功能。但如果是有经验的老用户，则会特意记住曾用过的购物车名字，但是需要他们费力去回想，很不方便，也会降低程序的体验感。</td>
+</tr>
+<tr>
+<td>Solution/  Trade-offs</td>
+<td>可以考虑用一个加载了该用户历史购物车名字的下拉框来替换文本输入框，用户点击下拉框，出现下拉名字列表，选中一个名字，该名字就会显示在框内。</td>
+</tr>
+<tr>
+<td>Relationships</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="23-uar-示例">2.3 UAR 示例</h2>
+<figure data-type="image" tabindex="2"><img src="https://blog.gabrielme.xyz/post-images/1647678190388.gif" alt="" loading="lazy"></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Identifier</th>
+<th style="text-align:center">HE1—Problem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Name</td>
+<td style="text-align:center">水平滚动条的使用不符合windows标准</td>
+</tr>
+<tr>
+<td style="text-align:center">Evidence</td>
+<td style="text-align:center">Heuristic: Consistency and standards （尤其是Consistency）  界面方面：     如下图所示，对获奖证书的模版选取是通过滚动条实现的。</td>
+</tr>
+<tr>
+<td style="text-align:center">Explanation</td>
+<td style="text-align:center">在通常情况下，如果水平滚动条出现在图像、文本框或是其它对象下方时，都是表示可以通过移动水平滚动条来显示图像、文本框或其它对象内容中水平方向上其它部分的内容。而在这里的应用不是为了显示一个获奖证书模版水平方向上的其它内容，而是用来选择不同的模版。</td>
+</tr>
+<tr>
+<td style="text-align:center">Severity</td>
+<td style="text-align:center">可能只对新用户来说会存在一定问题使用问题。因为当他们认为这个水平滚动条就是用来显示水平方向不同内容时就会忽略它，从而不能有效的使用这个功能。但当用户注意到提示信息后，或通过简单的拖拽试验就会知道水平滚动条是用来进行模的版选择。</td>
+</tr>
+<tr>
+<td style="text-align:center">Solution/  Trade-offs</td>
+<td style="text-align:center">可以考虑用其它表示选择的控件来替代水平滚动条，例如，列表框。</td>
+</tr>
+<tr>
+<td style="text-align:center">Relationships</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="24-启发式的10条规则">2.4 启发式的10条规则</h2>
+<ol>
+<li><strong>Match the Real World</strong></li>
+<li><strong>Consistency &amp; Standards</strong></li>
+<li><strong>Help &amp; Documentation</strong></li>
+<li><strong>User Control &amp; Freedom</strong></li>
+<li><strong>Visibility of System Status</strong></li>
+<li><strong>Flexibility &amp; Efficiency</strong></li>
+<li><strong>Error Prevention</strong></li>
+<li><strong>Recognition, Not Recall</strong></li>
+<li><strong>Error reporting, Diagnosis, and Recovery</strong></li>
+<li><strong>Esthetic &amp; Minimalist Design</strong></li>
+</ol>
+<h1 id="期末考试-回忆">期末考试 回忆</h1>
+<h2 id="一-选择题">一、 选择题</h2>
+<p>（大部分是第一、四章内容，以下仅对部分选项做回忆）</p>
+<ol>
+<li>考到了视觉信息和听觉信息的衰退时间，如下图</li>
+</ol>
+<figure data-type="image" tabindex="3"><img src="https://blog.gabrielme.xyz/post-images/1648215173423.png" alt="" loading="lazy"></figure>
+<ol>
+<li>考到了Long-Term Memory中的“Elaborative rehearsal moves chunks from WM to LTM by making connections with other chunks” ，选项中吧Elaborative换成了Maintenance，如图</li>
+</ol>
+<figure data-type="image" tabindex="4"><img src="https://blog.gabrielme.xyz/post-images/1648215181099.png" alt="" loading="lazy"></figure>
+<ol>
+<li>考到了感知处理、认知处理、Motor（不知道怎么翻译）处理的先后顺序，如图</li>
+</ol>
+<figure data-type="image" tabindex="5"><img src="https://blog.gabrielme.xyz/post-images/1648215186404.png" alt="" loading="lazy"></figure>
+<ol start="3">
+<li>考到了这句话“In scotopic （暗视的 conditions, peripheral vision (rod rich) is better than foveal vision”内容没变，如图</li>
+</ol>
+<figure data-type="image" tabindex="6"><img src="https://blog.gabrielme.xyz/post-images/1648215194123.png" alt="" loading="lazy"></figure>
+<ol>
+<li>考到了如图反应时间和正确率的关系</li>
+</ol>
+<figure data-type="image" tabindex="7"><img src="https://blog.gabrielme.xyz/post-images/1648215200889.png" alt="" loading="lazy"></figure>
+<ol>
+<li>考到了如图所示的定律，主语是这个定律的名字，但后边的解释对不上</li>
+</ol>
+<figure data-type="image" tabindex="8"><img src="https://blog.gabrielme.xyz/post-images/1648215205712.png" alt="" loading="lazy"></figure>
+<p>（只记得这么多了，基本上第四章全考了一遍，第一章考了一部分）</p>
+<ol>
+<li>好像是考了“更好的交互需要花费更多”（原话好像不是这样的，只记得有个more cost）</li>
+</ol>
+<h2 id="二-判断题">二、 判断题</h2>
+<p>（题目先后顺序记不住了）</p>
+<ol>
+<li>商业关于人机交互的研究总是（always）先于（precedes）大学的研究。（对应ppt第一章中的Time Lines，如下图）</li>
+</ol>
+<figure data-type="image" tabindex="9"><img src="https://blog.gabrielme.xyz/post-images/1648215213183.png" alt="" loading="lazy"></figure>
+<ol start="2">
+<li>啊，没顺序了，记不住了</li>
+</ol>
+<h2 id="三-简答题">三、 简答题</h2>
+<ol>
+<li>有一款类似于“找你妹”的游戏（原话不是这样的），你想要增加游戏的难度，请问你最好可以调整哪个视觉变量来实现？（对应ppt第五章关于视觉设计的内容）</li>
+<li>一个小组打算使用焦点访谈小组来获取用户的一手数据，是否合适？为什么，哪一种方法更合适？</li>
+</ol>
+<h2 id="四-大题">四、 大题</h2>
+<ol>
+<li>
+<p>有一个公司为盲人设计了一款网上购物系统，并且使用语音来指导盲人使用，题中给了一个“访谈主体和行为变量对应”的图。  （类似下图）</p>
+<p>行为变量有：</p>
+<p>​	使用过手机--------从来没有使用过手机</p>
+<p>​	面向服务的--------面向价格的</p>
+<p>​	必需品--------娱乐</p>
+<p>​	喜欢送货上门的--------（自取的？记不清了）</p>
+<p>​	前几次使用的时候需要帮助--------不需要帮助</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="10"><img src="https://blog.gabrielme.xyz/post-images/1648215220016.png" alt="" loading="lazy"></figure>
+<p>（1）根据这张图找出重要的行为模式</p>
+<p>（2）根据行为模式描述主要人物模型</p>
+<p>（3）描述人物场景</p>
+<ol>
+<li>
+<p>有一个面向小学生的双人PK成语（idiom）练习平台，是移动手机端，比赛时通过图片提供线索，用户需要在屏幕上手写输入成语，率先答对10道题的用户获胜。平台包含了所有小学生需要掌握的成语。（故事板不需要涉及注册）</p>
+<p>（1）使用叙述型故事板描述使用场景（usage context）</p>
+<p>（2）使用顺序型故事版描述主要的流程</p>
+<p>（3）使用分支型故事版描述所有的过程</p>
+</li>
+<li>
+<p>有一个线上出售书籍的网页截图（截图很普通，存在部分不一致问题），让写一个UAR HE1——Problem报告，并且给出了UAR报告模版表格，有问题的地方需要在截图中圈出。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Identifier: HE1——Problem</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Name:<br/></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Evidence:<br/></strong>  <br/>  <br/>  <br/>  <br/>  <br/>  <br/></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Explanation:<br/></strong>  <br/>   <br/>  <br/>  <br/>  <br/></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Severity<br/></strong>  <br/>  <br/>  <br/>  <br/>  <br/></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Possible solution and/or  Trade-offs:<br/></strong>  <br/>  <br/></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Relationships:<br/></strong>  <br/>  <br/>  <br/></td>
+</tr>
+</tbody>
+</table>
+<p>（差不多就能想起这么多，笔者不对内容的准确性和部分观点的正确性做保证，请大家理性参考）</p>
+</li>
+</ol>
+<h1 id="个人作业要求">个人作业要求</h1>
+<p>What you must do:</p>
+<ol>
+<li>
+<p>Choose an application to observe. This can be a Web page, a standard application, a utility program—even a gadget or appliance that has interesting user-interface features.</p>
+<p>选择要观察的应用程序。这可以是一个网页、一个标准应用程序、一个实用程序，甚至是一个具有有趣用户界面功能的小工具或设备。</p>
+</li>
+<li>
+<p>Write an essay of no more than <strong>ten</strong> pages in length. The essay should include:</p>
+<p>写一个长度不多于10页的论文，论文需要包括：</p>
+<ol>
+<li>
+<p>A brief description of the system or application you are critiquing. If at all possible, include a picture or drawing to help us understand this application. (10 points)</p>
+<p>一个关于你要评判的系统或应用的简短介绍，尽可能的包含一个图片或者图画来帮助我们理解这个应用。（10分）</p>
+</li>
+<li>
+<p>A concise statement of the problem you have observed. (10 points)</p>
+<p>对你发现的问题做一个简短的陈述。（10分）</p>
+</li>
+<li>
+<p>An explanation of why you believe this is a problem based on the content of &quot;Basic Psychology Needed for Interface Design.&quot; (Don't merely say that a feature is &quot;annoying&quot; or &quot;ugly,&quot; but explain how it forces a user to perform the tasks of perceiving, processing, or acting in ways that are difficult for people.) (10 points)</p>
+<p>基于“界面设计所需的基本心理学”解释你为什么认为这是一个问题（不要只说一个特征是令人恼怒的或者丑陋的，而是解释它是如何迫使用户以人们难以理解的方式执行感知、处理或行动的任务的）。（10分）</p>
+</li>
+<li>
+<p>A suggestion for improving the design and a rationale for that suggestion. (10 points)</p>
+<p>改进设计的建议和该建议的理由。（10分）</p>
+<p>(When proposing a solution, try to be as realistic as possible and not suggest costly or complicated enhancements. For example, it probably would not be reasonable to propose that VCRs should recognize and process human speech, as this would make them very expensive, if not unfeasible to build.)</p>
+<p>（在提出解决方案时，请尽量现实，不要提出昂贵或复杂的增强建议。例如，建议录像机应该识别和处理人类的语音可能是不合理的，因为如果不是不可行的话，这将使它们非常昂贵。）</p>
+</li>
+<li>
+<p>A method for testing your new design to see if it actually solves the problem. This part should include brief descriptions of</p>
+</li>
+</ol>
+<p>一种测试新设计的方法，看看它是否真的解决了问题。本部分应包括以下内容的简要说明：</p>
+<ol>
+<li>
+<p>What you would measure about people's behavior as they use the original application and your modified redesign. (10 points)</p>
+<p>当人们使用原始应用程序和修改后的重新设计时，你怎样衡量他们的行为。（10分）</p>
+</li>
+<li>
+<p>The types of people you would use in your test (e.g., computer-savvy experts or novices, etc.). (10 points)</p>
+<p>测试中使用的人员类型（如精通计算机的专家或新手等）。</p>
+</li>
+<li>
+<p>The tasks that you would ask those people to perform. (10 points)</p>
+<p>你要求这些人完成的任务。</p>
+</li>
+<li>
+<p>A prediction of the results you might get. (10 points)</p>
+<p>对你可能得到的结果的预测。（10分）</p>
+</li>
+<li>
+<p>What those results would mean if you got them. (10 points)</p>
+<p>如果你得到这些结果意味着什么。（10分）</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Format your report as <strong>Word documents. (10 points)</strong></p>
+<p>Details of format requirements refer to the homework template.</p>
+</li>
+</ol>
+<h1 id="uar报告-说明和模版">UAR报告 说明和模版</h1>
+<p>Complete this form <em>once</em>, as the first page of your report:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Product Name:</strong>  <br />  &lt;Name of this product or thing being studied&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Date of Study:</strong>  <br />  &lt;When run&gt;</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Experimenters’ Names:</strong>  <br />&lt;Names of experimenter or experimenters present&gt;</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Subject ID:</strong>  <br/>&lt;Anonymous identifier for the subject. Usually a number. Not used  for HE&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>Complete this form <em>for each</em> problem or good aspect that you observe. (An empty form, suitable for actual use, is on the last page. These are the instructions).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>No.</strong> <br/>  &lt;The <em>type</em>  of observation (HE or UE) and <em>unique  number</em>&gt; (HE=Heuristic evaluation; UE=User Evaluation)<br/>  <strong>Problem/Good  Aspect<br/></strong>  &lt; say which &gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Name:<br/></strong>  &lt; Succinct but descriptive  and distinctive name for the problem or good aspect.&gt;</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Evidence:<br/></strong>  Heuristic: &lt; For Heuristic Evaluations, list the name of the  heuristic (e.g., “Consistency”) &gt;<strong><br/></strong>  Interface aspect: <br/>  &lt;<em>Where</em> the problem is. Include  relevant facts about the interface. In addition to interface facts, pictures  are almost always necessary and usually faster to produce than words alone,  unless you are very skilled at providing word pictures&gt;</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Explanation:<br/></strong>  &lt;Your explanation of what’s bad or good about this interface  aspect. For Heuristic Analysis, put your explanation about how the heuristic  is met or violated. If applying the  heuristic involves making claims about the user (e.g., what the user will or  will not be familiar with), include claims and any evidence/reasoning to  support those claims. Locutions such  as, “The [expert, novice] user will *<strong>probably…because*</strong>…” or “Users will  be *<strong>unlikely*</strong>  to….*<strong>because*</strong>…” are appropriate here.&gt;</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Severity or Benefit:<br/></strong>  *<strong>Rating:*</strong> &lt;number + description. Use Nielson's ratings:   (see http://www.useit.com/papers/heuristic/severityrating.html)<br/>  0 = Not a  problem: I don't agree that this is a usability problem at all<br/>  1 = Cosmetic  problem only: need not be fixed unless extra time is available on project<br/>  2 = Minor  usability problem: fixing this should be given low priority<br/>  3 = Major  usability problem: important to fix, so should be given high priority<br/>  4 = Usability catastrophe:  imperative to fix this before product can be released &gt;<br/>  <strong>Justification (Frequency, Impact, Persistence,  Weights):<br/></strong>     *<strong>Frequency:*</strong> &lt;Common or rare? Why? How many users  (of what type—new, causal, experienced are <em>likely</em> to experience the problem? Why? Is this something most  users, some users, hardly any users will <em>probably</em>  want to do? Why?&gt;<br/>     *<strong>Impact:*</strong> &lt;Easy or difficult for  the user to overcome? Why? If is difficult to overcome if the user is  unlikely to be able to achieve goals or will probably waste a lot of time.&gt;<br/>     *<strong>Persistence:*</strong> &lt;Is it a problem  that is one-time (once users know about it and overcome it—no matter how  difficult it was to detect and to overcome) or will they be repeatedly  bothered by it? Why? (If they can’t detect it and overcome it, then it  persists)&gt;<br/>     *<strong>How I weighted the factors:*</strong> <br/>  &lt;Justify your numerical rating by providing your assessment and <strong>reasoning</strong> about all of the following:  frequency, impact, and persistence, and how you weighed these factors in your  overall severity rating.  For example, A relatively rare problem, easy  to overcome and low persistence could justify rating as a minor usability  problem; a low frequency problem but one that is critical occurs (e.g.,  Unable to Save) would be grounds for giving it a high severity rating,  despite low frequency. If this is a good aspect, then Rating is “NA,” but  describe the benefits to the user that you see from this aspect. &gt;</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Possible solution and/or  trade-offs:<br/></strong>  &lt; If a problem, propose a possible solution.    You MUST include trade-offs to be credible. If you can’t think of some bad  trade-off, say so.   If a good aspect, then trade-offs also are appropriate &gt;</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Relationships:<br/></strong>  &lt;Cross reference  other UARs this relates to (if any). Include No &amp; name. If the  relationship to the other UAR is not obvious, then give reasons why you list  it here (because…)&gt;</td>
+</tr>
+</tbody>
+</table>
+<p>Template：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>No. <br/></strong>  <strong>Problem/Good  Aspect</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Name:<br/></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Evidence:<br/></strong>  <br/>  <br/>  <br/>  <br/>  <br/>  <br/></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Explanation:<br/></strong>  <br/>  <br/>  <br/>  <br/>  <br/>  <br/>  <br/></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Severity or Benefit:<br/></strong>  *<strong>Rating:*</strong> <br/>  <strong>Justification (Frequency, Impact, Persistence,  Weights):</strong><br/>  <br/>  <br/>  <br/>  <br/>  <br/>  <br/>  <br/></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Possible solution and/or  Trade-offs:<br/></strong>  <br/>  <br/>  <br/>  <br/>  <br/></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Relationships:<br/></strong>  <br/>  <br/>  <br/>  <br/>  <br/></td>
+</tr>
+</tbody>
+</table>
+<p>Source: Carnegie Mellon University Brad A. Myers &amp; Bonnie John<br>
+原文标注可被自由复制和使用</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.gabrielme.xyz/dyZJ2OBHR/" class="tag">
+                    NEU 软件学院 课程资源
+                  </a>
+                
+              </div>
+            
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '8e52ba68bfaa8403de1e',
+        clientSecret: '65b9a40efca110a1948a2223dd5478e96f34599a',
+        repo: 'GitHubPageComment',
+        owner: 'Gabriel-1023',
+        admin: ['Gabriel-1023'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4848497781078288" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <meta charset="utf-8" >
+
+<title>NEU/NEU-2.4G iOS校园网统一认证自动登录 自动化快捷指令 | Gabriel&#39;s</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.gabrielme.xyz/favicon.ico?v=1679651774679">
+<link rel="stylesheet" href="https://blog.gabrielme.xyz/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HL7G4PXRW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4HL7G4PXRW');
+</script>
+
+
+    <meta name="description" content="0. 介绍
+通过iCloud链接导入共享的快捷指令，再通过自动化配置自动运行条件（连接校园网热点NEU/NEU-2.4G时）运行快捷指令。快捷指令使用学校统一认证方法登录校园网，快捷指令的每个步骤都可直接查看，在快捷指令中配置的个人校园账号..." />
+    <meta name="keywords" content="其他" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }" style="overflow-y: hidden;">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.gabrielme.xyz">
+        <img src="https://blog.gabrielme.xyz/images/avatar.png?v=1679651774679" class="site-logo">
+        <h1 class="site-title">Gabriel&#39;s</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/dyZJ2OBHR" class="site-nav">
+            NEU软工课程资源
+          </a>
+        
+      
+        
+          <a href="/CUHK_CS" class="site-nav">
+            CS课程资源
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="https://blog.csdn.net/weixin_43529394" class="site-nav" target="_blank">
+            CSDN
+          </a>
+        
+      
+        
+          <a href="/About" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Gabriel-1023" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      干就完了
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.gabrielme.xyz/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">NEU/NEU-2.4G iOS校园网统一认证自动登录 自动化快捷指令</h2>
+            <div class="post-date">2022-03-15</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="0-介绍">0. 介绍</h2>
+<p>通过iCloud链接导入共享的快捷指令，再通过自动化配置自动运行条件（连接校园网热点NEU/NEU-2.4G时）运行快捷指令。快捷指令使用学校统一认证方法登录校园网，快捷指令的每个步骤都可直接查看，在快捷指令中配置的个人校园账号和密码不会被作者非法收集和利用，可放心使用。<br>
+<strong>本快捷指令主要适用于浑南图书馆或一号楼等只有NEU热点的地方，其他的地方请优先使用不需要手动登录的NEU_Mobile热点。</strong></p>
+<h2 id="1-设置步骤">1. 设置步骤</h2>
+<h3 id="1-打开快捷指令的私人共享设置">(1) 打开快捷指令的私人共享设置</h3>
+<p>打开私人共享设置后才能从iCloud链接导入他人创建的快捷指令。<br>
+依次打开：设置-&gt;快捷指令<br>
+如图，打开“私人共享”设置，如果第一次使用快捷指令，设置状态为禁用，需要根据该设置下方说明在“快捷指令”APP 中新建并运行任意快捷指令。<br>
+<img src="https://blog.gabrielme.xyz/post-images/1647334806036.png" alt="" loading="lazy"></p>
+<h3 id="2-导入快捷指令">(2) 导入快捷指令</h3>
+<p>在Safari 浏览器中访问：   <a href="https://www.icloud.com/shortcuts/db19cbde702d43cdb2a4ffea8e9e035b">iCloud快捷指令共享链接</a> 或从 <a href="https://github.com/Gabriel-1023/Basement/raw/main/NEU%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95.shortcut">作者GitHub快捷指令源文件</a> 下载导入，点击“获取捷径”，自动跳转到“快捷指令”APP，点击“添加快捷指令”或下滑到底部点击“添加不受信任的快捷指令”，在接下来的对话框中分别输入自己的校园网统一认证方法登录账号和密码，完成设置。</p>
+<h3 id="3-添加自动化">(3) 添加自动化</h3>
+<p>“快捷指令”APP-&gt;自动化-&gt;创建个人自动化 或 + -&gt;无线局域网-&gt;选取网络-&gt;勾选NEU和NEU-2.4G-&gt;完成-&gt;下一步-&gt;添加操作-&gt;搜索“快捷指令”-&gt;运行快捷指令-&gt;浅蓝色的“快捷指令”-&gt;选择“NEU自动登录”-&gt;下一步-&gt;完成</p>
+<h3 id="4-首次运行">(4) 首次运行</h3>
+<p>手动将无线网络连接到NEU或NEU-2.4G，弹出快捷指令通知，点击通知，点“运行”（这一步应该是出于安全，并不能省去而全自动运行）。首次运行会弹出两次“向网站发送数据”还有一次“允许发送通知”的对话框，如下图，都点击“好”，之后的运行不会再次弹出。<br>
+<img src="https://blog.gabrielme.xyz/post-images/1647343083804.png" alt="" loading="lazy"><br>
+如果运行显示已经在线，要继续验证快捷指令是否能成功登录，请前往 https://ipgw.neu.edu.cn 注销登录，并重新运行快捷指令。如果报错，请到文末查看“登录失败可能原因及解决方法”。</p>
+<h2 id="2-登录失败可能原因及解决方法">2. 登录失败可能原因及解决方法</h2>
+<ol>
+<li>关闭无线网络并重新打开（解决大部分问题）</li>
+<li>不要频繁断线重连，可能出现未知错误。</li>
+<li>无线网络连接自动跳到了其他热点上。</li>
+<li>校园网每个账户只能同时三个设备在线，在线设备达到三个需要手动到 https://ipgw.neu.edu.cn:8800/ 下线设备</li>
+</ol>
+<h2 id="3-后续可能的改进计划">3. 后续可能的改进计划</h2>
+<p>当前版本不稳定，补八哥，也希望各位大佬能在出bug的时候能帮忙找原因（目前有个未知原因的登录错误bug</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.gabrielme.xyz/ApctfAbqI/" class="tag">
+                    其他
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.gabrielme.xyz/Use-Transmission-By-Harddisk-On-Raspberry-Pi/">
+                  <h3 class="post-title">
+                    树莓派 安装Transmission并自动挂载移动硬盘
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '8e52ba68bfaa8403de1e',
+        clientSecret: '65b9a40efca110a1948a2223dd5478e96f34599a',
+        repo: 'GitHubPageComment',
+        owner: 'Gabriel-1023',
+        admin: ['Gabriel-1023'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

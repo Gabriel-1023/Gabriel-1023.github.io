@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4848497781078288" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <meta charset="utf-8" >
+
+<title>NEU综合教务系统留学4分制成绩小助手 油猴脚本 | Gabriel&#39;s</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.gabrielme.xyz/favicon.ico?v=1679651774679">
+<link rel="stylesheet" href="https://blog.gabrielme.xyz/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HL7G4PXRW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4HL7G4PXRW');
+</script>
+
+
+    <meta name="description" content="东大4分制GPA计算方法：
+绩点&gt;=3.5 GPA = 4
+绩点&gt;=2.5 GPA = 3
+绩点&gt;=1   GPA = 2
+此成绩转换方法来自东大国际处，仅供参考
+如需确认或证明请自行前往国际处询问
+程序计算绩点和系统绩点..." />
+    <meta name="keywords" content="其他" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }" style="overflow-y: hidden;">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.gabrielme.xyz">
+        <img src="https://blog.gabrielme.xyz/images/avatar.png?v=1679651774679" class="site-logo">
+        <h1 class="site-title">Gabriel&#39;s</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/dyZJ2OBHR" class="site-nav">
+            NEU软工课程资源
+          </a>
+        
+      
+        
+          <a href="/CUHK_CS" class="site-nav">
+            CS课程资源
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="https://blog.csdn.net/weixin_43529394" class="site-nav" target="_blank">
+            CSDN
+          </a>
+        
+      
+        
+          <a href="/About" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Gabriel-1023" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      干就完了
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.gabrielme.xyz/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">NEU综合教务系统留学4分制成绩小助手 油猴脚本</h2>
+            <div class="post-date">2022-04-08</div>
+            
+            <div class="post-content" v-pre>
+              <p>东大4分制GPA计算方法：<br>
+绩点&gt;=3.5 GPA = 4<br>
+绩点&gt;=2.5 GPA = 3<br>
+绩点&gt;=1   GPA = 2<br>
+此成绩转换方法来自东大国际处，仅供参考<br>
+如需确认或证明请自行前往国际处询问</p>
+<p>程序计算绩点和系统绩点相同则表明GPA计算无误</p>
+<p>使用方法：<br>
+将下方程序代码复制并添加到油猴插件的新脚本中<br>
+登录东北大学综合教务系统之后，可在页面右侧看到悬浮窗口</p>
+<figure data-type="image" tabindex="1"><img src="https://blog.gabrielme.xyz/post-images/1649350731417.png" alt="" loading="lazy"></figure>
+<p>点击“点此查看东大版GPA”即可跳转到成绩界面并显示结果</p>
+<figure data-type="image" tabindex="2"><img src="https://blog.gabrielme.xyz/post-images/1649350771415.png" alt="" loading="lazy"></figure>
+<p>程序代码：</p>
+<pre><code class="language-javascript">// ==UserScript==
+// @name         智慧东大留学成绩小助手
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        http://219.216.96.4/eams/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+    var x;
+    var jidian_sum=0;
+    var credit_sum=0;
+    var GPA_sum = 0;
+    var table = document.getElementById(&quot;grid21344342991&quot;);
+    if(table === null) table = document.getElementById(&quot;grid18648965881&quot;);
+    if(table === null){
+        let suckIt = `&lt;div style=&quot;position: fixed;top: 50%;z-index: 999;right: 10%;padding: 1em;background: rgba(233,233,233);border: 1px solid #aaa;&quot;&gt;
+        &lt;p style=&quot;text-align: center;&quot;&gt;
+        &lt;a href=&quot;http://219.216.96.4/eams/teach/grade/course/person!historyCourseGrade.action?projectType=MAJOR&quot;&gt;
+        &lt;button style=&quot;border: 1px solid #aaa;padding: 5px;color: #3a6dd2;cursor: pointer;&quot;&gt;点此查看东大版GPA&lt;/button&gt;
+        &lt;/a&gt;
+        &lt;p&gt;脚本作者：Gabriel&lt;/p&gt;
+        &lt;p&gt;个人网站：&lt;a href=&quot;https://gabriel-1023.github.io/&quot; target=&quot;_blank&quot;&gt;https://gabriel-1023.github.io/&lt;/a&gt;&lt;/p&gt;
+        &lt;/p&gt;
+        &lt;/div&gt;`;
+        document.body.insertAdjacentHTML(&quot;afterbegin&quot;, suckIt);
+    }
+    else{
+            // console.log(table);
+            for(var i=1;i&lt;table.rows.length;i++)
+            {
+                var grade = table.rows[i].cells[11].innerHTML.replace(/	/g,&quot;&quot;).replace(/\n/g,&quot;&quot;);
+                if(grade === &quot;--&quot;) continue;
+                var credit = Number(table.rows[i].cells[6].innerHTML);
+                var jidian = Number(table.rows[i].cells[12].innerHTML.replace(/	/g,&quot;&quot;).replace(/\n/g,&quot;&quot;));
+                console.log(&quot;成绩：&quot;+grade+&quot; 学分：&quot;+credit+&quot; 绩点：&quot;+jidian);
+                jidian_sum = jidian_sum+jidian*credit;
+                credit_sum = credit_sum+credit;
+                //console.log(&quot;学分：&quot;+credit+&quot; 绩点：&quot;+jidian);
+                if(jidian&gt;=3.5)
+                {
+                    GPA_sum = GPA_sum+4*credit;
+                }
+                else if(jidian &gt;=2.5)
+                {
+                    GPA_sum=GPA_sum+3*credit;
+                }
+                else if(jidian&gt;=1)
+                {
+                    GPA_sum = GPA_sum+2*credit;
+                }
+            }
+            var zongjidian=jidian_sum/credit_sum
+            var GPA = GPA_sum/credit_sum
+            console.log(GPA);
+            var text = document.querySelector(&quot;body &gt; div:nth-child(3)&quot;)
+            //console.log(text);
+            let suckIt = `&lt;div style=&quot;position: fixed;top: 30%;z-index: 999;left: 10%;padding: 1em;background: rgba(233,233,233);border: 1px solid #aaa;&quot;&gt;
+            &lt;p&gt;东大版GPA计算方法：&lt;/p&gt;
+            &lt;p&gt;绩点&gt;=3.5 GPA = 4&lt;/p&gt;
+            &lt;p&gt;绩点&gt;=2.5 GPA = 3&lt;/p&gt;
+            &lt;p&gt;绩点&gt;=1    GPA = 2&lt;/p&gt;
+            &lt;p&gt;此成绩转换方法来自东大国际处，仅供参考&lt;/p&gt;
+            &lt;p&gt;如需确认或证明请自行前往国际处询问&lt;/p&gt;
+            &lt;p&gt;程序得出绩点：`+zongjidian.toFixed(5)+`&lt;/p&gt;
+            &lt;p&gt;绩点和系统绩点相同则表明GPA计算无误&lt;/p&gt;
+            &lt;p&gt;程序得出东大版GPA：`+GPA.toFixed(5)+`&lt;/p&gt;
+            &lt;p&gt;脚本作者：Gabriel&lt;/p&gt;
+            &lt;p&gt;个人网站：&lt;a href=&quot;https://gabriel-1023.github.io/&quot; target=&quot;_blank&quot;&gt;https://gabriel-1023.github.io/&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;`;
+        document.body.insertAdjacentHTML(&quot;afterbegin&quot;, suckIt);
+            //text.innerHTML = &quot;总绩点：&quot;+zongjidian.toFixed(5)+&quot; 东大版GPA:&quot;+GPA.toFixed(5);
+    }
+})();
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.gabrielme.xyz/ApctfAbqI/" class="tag">
+                    其他
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.gabrielme.xyz/xian-xing-dai-shu-zhi-shi-dian/">
+                  <h3 class="post-title">
+                    线性代数知识点
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '8e52ba68bfaa8403de1e',
+        clientSecret: '65b9a40efca110a1948a2223dd5478e96f34599a',
+        repo: 'GitHubPageComment',
+        owner: 'Gabriel-1023',
+        admin: ['Gabriel-1023'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

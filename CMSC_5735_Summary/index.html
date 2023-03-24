@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4848497781078288" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <meta charset="utf-8" >
+
+<title>CMSC 5735 Summary | Gabriel&#39;s</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.gabrielme.xyz/favicon.ico?v=1679651774679">
+<link rel="stylesheet" href="https://blog.gabrielme.xyz/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HL7G4PXRW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4HL7G4PXRW');
+</script>
+
+
+    <meta name="description" content="
+1. 知识点总结
+2. Lab 知识总结
+
+Lab 1: Serverless Function
+Lab 2: FaaS
+Lab 3: gRPC
+Lab 7: CRDT
+Lab 8: Flink
+
+
+3. 期末考回忆
+
+
+1. 知识点总结..." />
+    <meta name="keywords" content="CUHK CS 课程资源" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }" style="overflow-y: hidden;">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.gabrielme.xyz">
+        <img src="https://blog.gabrielme.xyz/images/avatar.png?v=1679651774679" class="site-logo">
+        <h1 class="site-title">Gabriel&#39;s</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/dyZJ2OBHR" class="site-nav">
+            NEU软工课程资源
+          </a>
+        
+      
+        
+          <a href="/CUHK_CS" class="site-nav">
+            CS课程资源
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="https://blog.csdn.net/weixin_43529394" class="site-nav" target="_blank">
+            CSDN
+          </a>
+        
+      
+        
+          <a href="/About" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Gabriel-1023" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      干就完了
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.gabrielme.xyz/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">CMSC 5735 Summary</h2>
+            <div class="post-date">2022-11-28</div>
+            
+            <div class="post-content" v-pre>
+              <p><ul class="markdownIt-TOC">
+<li><a href="#1-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93">1. 知识点总结</a></li>
+<li><a href="#2-lab-%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93">2. Lab 知识总结</a>
+<ul>
+<li><a href="#lab-1-serverless-function">Lab 1: Serverless Function</a></li>
+<li><a href="#lab-2-faas">Lab 2: FaaS</a></li>
+<li><a href="#lab-3-grpc">Lab 3: gRPC</a></li>
+<li><a href="#lab-7-crdt">Lab 7: CRDT</a></li>
+<li><a href="#lab-8-flink">Lab 8: Flink</a></li>
+</ul>
+</li>
+<li><a href="#3-%E6%9C%9F%E6%9C%AB%E8%80%83%E5%9B%9E%E5%BF%86">3. 期末考回忆</a></li>
+</ul>
+</p>
+<h1 id="1-知识点总结">1. 知识点总结</h1>
+<ol>
+<li>虚拟化和数据中心
+<ul>
+<li>两种 Hypervisor：直接在硬件上和在操作系统上</li>
+<li>两种 Hypervisor 实现方法：全虚拟化和半虚拟化</li>
+<li>软件定义网络</li>
+<li>两种RDMA：被授权后直接写和一方写一方收</li>
+</ul>
+</li>
+<li>高可用性背景
+<ul>
+<li>衡量分布式算法：为了保持复制副本需要发送的信息数和节点数的关系，越小越好</li>
+<li>正确性
+<ul>
+<li>Safety</li>
+<li>Liveness</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>时序
+<ul>
+<li>Total Order: 服务端接收一致</li>
+<li>Linearizability: 遵守真实时间，平行系统并发数据结构锁</li>
+<li>FIFO Order: 客户端顺序不变，客户之间无关联</li>
+<li>Happen-Before Order
+<ul>
+<li>Lamport’s Logical clock  a &lt; b  -&gt; LC(a) &lt; LC(b)
+<ul>
+<li>只能辨别潜在因果，不能辨别因果</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Causal Order
+<ul>
+<li>Vector clock   a &lt; b &lt;-&gt; VC(a) &lt; VC(b)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>领导人选举
+<ul>
+<li>领导人选举 和 互斥锁
+<ul>
+<li>互斥锁不处理死去的领导人</li>
+<li>互斥锁讨厌饥饿，但领导人可以一直获取锁</li>
+</ul>
+</li>
+<li>Bully算法 - 寻找最大 ID 作为领导人
+<ul>
+<li>复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>错误
+<ul>
+<li>Crash Failure
+<ul>
+<li>异步不可检测，同步可检测</li>
+<li>fail-stop 可检测错误，当发生错误时，变为一种能让人察觉到的状态</li>
+<li>crash-stop 不可检测错误</li>
+</ul>
+</li>
+<li>Byzantine Failure
+<ul>
+<li>考虑所有可能的错误</li>
+<li>多数情况下用来应对不信任问题</li>
+</ul>
+</li>
+<li>错误检测
+<ul>
+<li>complete: 不会丢失任何错误通知</li>
+<li>accurate: 不会有任何错误的判断</li>
+<li>异步系统下不能同时 complete 和 accurate</li>
+<li>分布式系统下偏向于 complete</li>
+<li>如何检测：Ping/HeartBeat</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一致性
+<ul>
+<li>一致性问题
+<ul>
+<li>Crash Fault tolerant</li>
+<li>每个节点有自己的初始值</li>
+<li>所有节点最终达成一致意见（liveness）</li>
+<li>有效性：最终的决定必须是选举过程所能决定的</li>
+</ul>
+</li>
+<li>一致性问题的难点
+<ul>
+<li>异步系统
+<ul>
+<li>不可能在具有一个错误进程的系统中达到分布式一致性</li>
+</ul>
+</li>
+<li>同步系统
+<ul>
+<li>拜占庭错误：不可能在节点数小于等于3和有一个有害节点中达成一致性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>拜占庭问题
+<ul>
+<li>OM algorithm</li>
+</ul>
+</li>
+<li>PAXOS 不考虑 拜占庭问题</li>
+<li>PBFT 考虑 拜占庭问题</li>
+</ul>
+</li>
+<li>Raft
+<ul>
+<li>Leader Election</li>
+<li>Log Replication</li>
+</ul>
+</li>
+<li>一致性模型
+<ul>
+<li>CAP 理论</li>
+<li>一致性模型
+<ul>
+<li>线性一致性</li>
+<li>结果一致性 (total order)</li>
+<li>因果一致性</li>
+<li>FIFO一致性</li>
+<li>最终一致性</li>
+</ul>
+</li>
+<li>保持一致性的花费是吞吐量和Scalability的瓶颈</li>
+</ul>
+</li>
+<li>CRDT
+<ul>
+<li>Conflict-Free Replicated Data Type</li>
+<li>最终一致性：可能看到暂时的不一致</li>
+<li>问题解决：commutative 可交换的</li>
+<li>两种：
+<ul>
+<li>CmRDT 基于操作：变化的状态一个一个发，丢失会引起故障</li>
+<li>CvRDT 基于状态：可以直接发送最后的状态</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ZooKeeper
+<ul>
+<li>目的：高性能，raft并不是为了高性能</li>
+<li>妥协
+<ul>
+<li>延迟同时返回多个Put请求的OK</li>
+<li>从任意跟随者处读取
+<ul>
+<li>违反了 linearizability：改进，向leader写入后得到 commitIndex，只有当追随者的 commitIndex赶上了leader的commitIndex之后才可以返回用户的get请求</li>
+<li>改进之后不会再出现：第一次<strong>写入</strong>得到最新数据，第二次得到旧数据</li>
+<li>还会出现的问题：之前并没有写入任何信息的客户端，直接读取到旧信息</li>
+<li>如何解决：使用API的方式，看客户端是否需要在读取后被通知“Sorry！读取的数据是旧数据”</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>流和分布式快照
+<ul>
+<li>流系统
+<ul>
+<li>collect - log - analyze - serve &amp; store</li>
+<li>Exactly-once Consistency
+<ul>
+<li>实现方式：分布式快照</li>
+</ul>
+</li>
+<li>时间
+<ul>
+<li>Event Time: 创建时间</li>
+<li>Processing Time: 被处理时间</li>
+<li>group by processing time - &gt; group by event time</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分布式快照
+<ul>
+<li>cut: 每个进程至少一个事件</li>
+<li>consistent cut: 每个进程的前驱节点也在其中
+<ul>
+<li>consistent cut 的边界是一个快照</li>
+</ul>
+</li>
+<li>Chandy-Lamport Snapshot 算法
+<ul>
+<li>Initiator: 记录自己状态 c_i, 并将 c_i 作为标记 发送给所有的出通道</li>
+<li>Peer: 第一次接收到 c_i, 记录自己的状态，转发给自己所有的出通道</li>
+<li>等待从所有入通道接收到 c_i，结束</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>键值存储
+<ul>
+<li>Consistent Hashing 环状结构：顺时针选择最近节点</li>
+<li>Distributed Hash Table - Chrod
+<ul>
+<li>搜索：寻找大于 h(K) 的最小节点</li>
+<li>添加节点</li>
+<li>节点离开</li>
+<li>节点失效：在节点的前驱和后继中做副本</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>链式复制
+<ul>
+<li>
+<p>Raft 不是为了高性能，而是为了高可用，要实现高性能但较低可用的</p>
+</li>
+<li>
+<p>在头部写，在尾部读，只有更新从头部到达尾部，才能返回 ok</p>
+</li>
+<li>
+<p>Raft 维护心跳</p>
+</li>
+<li>
+<p>发生crash</p>
+<ul>
+<li>头结点 crash，后一个节点成为头结点</li>
+<li>尾节点 crash，前一个节点成为尾节点</li>
+<li>中间节点 crash，前一个节点跳过他发给下一个节点</li>
+</ul>
+</li>
+<li>
+<p>添加节点</p>
+<ul>
+<li>添加在尾部，开始复制尾节点信息，复制完之后，成为新的尾节点，原尾节点把消息发给新尾节点</li>
+</ul>
+</li>
+<li>
+<p>优点：读写负载分开；线性；头结点发送负担小；实现简单</p>
+</li>
+<li>
+<p>缺点：一个节点失效，客户端等待回复；写入延迟高</p>
+</li>
+<li>
+<p>提高读取并发性：将数据流分为多个线路，不同节点担当不同的头尾节点，实现读取负载均衡和线性</p>
+</li>
+<li>
+<p>EBS 使用 Chain Replication</p>
+</li>
+</ul>
+</li>
+<li>云数据库
+<ul>
+<li>ACID on sigle node （Isolation）
+<ul>
+<li>悲观锁
+<ul>
+<li>2 Prase Locking (2PL)
+<ul>
+<li>想要访问就要获取锁</li>
+<li>只要开始释放锁，就不能再获取锁</li>
+<li>确保线性</li>
+</ul>
+</li>
+<li>Fine grained lock
+<ul>
+<li>读使用共享锁</li>
+<li>写使用排它锁</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>乐观锁
+<ul>
+<li>基于时间戳</li>
+<li>时间戳+多版本</li>
+<li>基于验证的 （OCC）
+<ul>
+<li>保存自己读取和写入涉及到的集合，验证是否与其他事务有重叠，无重叠则提交，有重叠则终止重启</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ACID （Durable）
+<ul>
+<li>WAL （write-ahead logging）
+<ul>
+<li>数据写入硬盘之前，必须先将日志写入磁盘</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ACID （Atomic）on multi-node
+<ul>
+<li>2 Phrase Commit
+<ul>
+<li>all or nothing</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Aurora
+<ul>
+<li>历代
+<ul>
+<li>第一代：MySQL部署在服务器上，不能容错硬盘宕机</li>
+<li>第二代：在一个数据中心上的多个硬盘上使用链式复制，不能容错数据中心挂掉</li>
+<li>第三代：在不同数据中心的多个硬盘上使用链式复制，慢</li>
+<li>第四代：不同数据中心多副本</li>
+</ul>
+</li>
+<li>区别
+<ul>
+<li>传统数据库
+<ul>
+<li>提交时将日志从缓存传给远程磁盘日志</li>
+<li>提交时将数据更新从缓存传给远程磁盘数据</li>
+</ul>
+</li>
+<li>Aurora
+<ul>
+<li>提交时将日志从缓存传给远程磁盘日志</li>
+<li>从日志重建数据</li>
+<li>Quorum-Based replication</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Qurum-Based replication
+<ul>
+<li>N个节点中，一个写数据需要 W 票，一个读数据需要 R 票</li>
+<li>需满足 W + R &gt; N, W &gt; N / 2</li>
+<li>写只在 W 票时成功，读从 R 个副本中找最新版本号数据</li>
+</ul>
+</li>
+<li>数据库复制模式
+<ul>
+<li>同步：多节点，写入所有节点，读取任一节点；所有节点副本一致</li>
+<li>异步：主从模式，从节点只负责备份，主从节点达到最终一致性</li>
+<li>Qurum-Based replication</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>术语缩写</p>
+<ul>
+<li>FLP：三个人名的缩写，<strong>在网络可靠，但允许节点失效（即便只有一个）的最小化异步模型系统中，不存在一个可以解决一致性问题的确定性共识算法</strong>（No completely asynchronous consensus protocol can tolerate even a single unannounced process death）</li>
+<li>CAP：<strong>Consistency</strong>、<strong>Availability</strong>、<strong>Partition</strong>
+<ul>
+<li><strong>强一致性。<strong>强一致性意味着，当系统的更新操作成功并返回客户端完成后，所有节点</strong>在同一时间的</strong>数据完全一致。</li>
+<li>分布式系统可以正常响应时间内提供相应的服务。</li>
+<li>分布式系统在遇到某节点或网络分区故障的时候，仍然能够对外提供满足一致性和可用性的服务。</li>
+</ul>
+</li>
+</ul>
+<h1 id="2-lab-知识总结">2. Lab 知识总结</h1>
+<h2 id="lab-1-serverless-function">Lab 1: Serverless Function</h2>
+<ol>
+<li>建立 Lambda 函数：选择环境，角色</li>
+<li>添加代码到函数，设置 Handler 指向该函数名</li>
+<li>部署、创建用例进行测试</li>
+</ol>
+<p>练习</p>
+<ol>
+<li>
+<p>A serverless function:</p>
+<p>(a) dose not run on any server machine (be it virtual/physical).</p>
+<p>(b) has a start-up time faster than virtual machine.</p>
+<p>(c) is stateful (i.e. you don’t need an external service to maintain its state across multiple invocations)</p>
+<p>(d) must be written in Actor model</p>
+</li>
+</ol>
+<h2 id="lab-2-faas">Lab 2: FaaS</h2>
+<p>创建步骤：</p>
+<ol>
+<li>用 S3 创建桶（bucket），用于上传图片</li>
+<li>在 DynamoDB 创建表，存储结果</li>
+<li>在 Lambda 中为第三方库创建 Lambda 层，上传库文件</li>
+<li>在 Lambda 中创建图像识别函数，写入代码</li>
+<li>在 Lambda 中创建管道
+<ul>
+<li>触发器为桶</li>
+<li>层选择建立的层</li>
+<li>环境变量中添加数据库表名</li>
+</ul>
+</li>
+</ol>
+<p>习题</p>
+<ol>
+<li>
+<p>In AWS Lambda, we usually put our third party libraries in :<br>
+(a) Lambda function.<br>
+(b) Layers.  √<br>
+(c) Triggers.<br>
+(d) Local client.</p>
+</li>
+<li>
+<p>An AWS Lambda layer:</p>
+<p>(a) contains alls ource code of your lambda function.</p>
+<p>(b) contains all resources (such as image) as the input of the lambda function.</p>
+<p>(c) contains all additional code such as the third party librarise. √</p>
+<p>(d) contains the logs of the lambda function.</p>
+</li>
+</ol>
+<h2 id="lab-3-grpc">Lab 3: gRPC</h2>
+<p>创建步骤：</p>
+<ol>
+<li>docker环境：Protobuf、Maven、Java/Go、Protoc gRPC GO plugin protoc-gen-go</li>
+<li>编写 .proto 文件：包含 gRPC 定义、请求和响应类型信息</li>
+<li>使用 Java 实现服务端和客户端
+<ul>
+<li>创建 pom.xml 引入依赖</li>
+<li>生成两个java文件，是通过 .proto 文件生成的
+<ul>
+<li>CalculatorGrpc.java</li>
+<li>CalculatorOuterClass.java</li>
+</ul>
+</li>
+<li>编写 CalculatorServer.java
+<ul>
+<li>服务内部静态类继承了 CalculatorGrpc 类</li>
+<li>静态类的请求和响应类型对象来自 CalculatorOuterClass</li>
+<li>main函数注册服务绑定端口</li>
+<li>生成 jar 包</li>
+</ul>
+</li>
+<li>编写 CalculatorClient.java 使用 java 实现客户端
+<ul>
+<li>使用 stub 来调用 gRPC 服务</li>
+<li>生成 jar 包</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用 Go 实现客户端
+<ul>
+<li>利用 .proto 文件生成 Go 的 stub</li>
+<li>编写 main.go
+<ul>
+<li>创建 gRPC 连接</li>
+<li>利用 stub 调用 gRPC 服务</li>
+<li>编译</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>习题</p>
+<ol start="2">
+<li>In gRPC:<br>
+(a) a .proto file can be executed directly as a program.<br>
+(b) a .proto file is usually generated automatically from your source code by protobuf.<br>
+(c) clients in different programming languages can reuse the same client stubs.<br>
+(d) a .proto file is required to generate stubs using protobuf.  √</li>
+</ol>
+<h2 id="lab-7-crdt">Lab 7: CRDT</h2>
+<p>Conflict-Free Replicated Data Type</p>
+<p>使用的开源库： Yjs</p>
+<table>
+<thead>
+<tr>
+<th>依赖</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quill.js</td>
+<td>API驱动的富文本编辑器</td>
+</tr>
+<tr>
+<td>React-quilljs</td>
+<td>Quill 的钩子包装，使得可以制作可协作协作文本框的React组件<br />而不是ReactQuill</td>
+</tr>
+<tr>
+<td>Yjs</td>
+<td>CRDT框架</td>
+</tr>
+<tr>
+<td>y-websocket</td>
+<td>为 Yjs 提供 WebSocket 连接</td>
+</tr>
+</tbody>
+</table>
+<p>步骤：</p>
+<ol>
+<li>运行 docker 容器，到达 App 目录，为 Create-React-App 创建
+<ul>
+<li>src/App.js: 三个 ClickToEdit 组件，分别包含一个 Yjs 提供的文档数据结构 Y.doc</li>
+<li>src/ClickToEdit.js: 使用了 React 的钩子，来建立 WebSocket 连接，实现了连接和断开连接的切换按钮</li>
+</ul>
+</li>
+<li>运行代码</li>
+</ol>
+<p>习题：</p>
+<ol start="5">
+<li>Which library was not used to implement our CRDT application?<br>
+(a) Quill.js<br>
+(b) ReactQuill  √<br>
+(c) Yjs<br>
+(d) y-websocket</li>
+</ol>
+<h2 id="lab-8-flink">Lab 8: Flink</h2>
+<p>Flink: Connector - flatMap() - keyBy() - sum() - PrintSink</p>
+<ol>
+<li>flatMap() emits 0 or more records</li>
+<li>keyBy(0) 按照第一个元素进行分组</li>
+<li>sum(1) 对分组的第二个元素求和</li>
+</ol>
+<p>练习</p>
+<ol>
+<li>
+<p>When using Flink:</p>
+<p>(a) flatMap() emits 0 or more records (i.e., 1:n mapping). √</p>
+<p>(b) In a Flink Cluster, there will be 1x JobManager and 1x TaskManager.</p>
+<p>(c) JobManager will also execute tasks if TaskManager is too busy.</p>
+<p>(d) User can only submit their program through WebUI.</p>
+</li>
+</ol>
+<h1 id="3-期末考回忆">3. 期末考回忆</h1>
+<ol>
+<li>
+<p>DC 虚拟化</p>
+<ol>
+<li>……的技术有两种虚拟机，容器等，Function as a Service 的实现技术是什么</li>
+<li>没有CPU参与的RDMA技术是哪一种</li>
+<li>设计一个数据中心需要考虑什么</li>
+</ol>
+</li>
+<li>
+<p>Clock</p>
+<ol>
+<li>按图给出 Lamport Clock</li>
+<li>按图给出 Vector Clock</li>
+<li>分别给出两种 Clock 的优点</li>
+</ol>
+</li>
+<li>
+<p>Raft</p>
+<p>S1:</p>
+<ol>
+<li>按题目写出每个 term 可能的 Leader</li>
+<li>3.2 有没有可能被提交</li>
+<li>如果xx成为 Leader，给出其他节点要 drop 的 log entries</li>
+<li>？</li>
+</ol>
+</li>
+<li>
+<p>SnapShot</p>
+<ol>
+<li>图中两条线的 cut 是不是 consistent cut</li>
+<li>在图中画出每个节点至少有3个状态的最小的 consistent cut</li>
+<li>如果 channel 不按照 FIFO的顺序，Chandy Lamport 算法是否可行</li>
+</ol>
+</li>
+<li>
+<p>Linearizability</p>
+<p>给了一个图，图里边 4 个进程，有对同一个数据同时读写的操作，并且读写操作需要花费一定的时间才会 return，问这个系统是不是线性的。如果不是线性的，要尝试在图中用箭头画出一个 cycle 来反证。</p>
+</li>
+<li>
+<p>Chrod key-value store</p>
+<ol>
+<li>写出一个节点的 finger table</li>
+<li>H(x) = x mod 10，从N_12开始访问，写出 get(58) 访问的节点</li>
+<li>？</li>
+</ol>
+</li>
+<li>
+<p>Aruora 原题（还是不会做，建议去读论文试试）</p>
+</li>
+<li>
+<p>CRDT</p>
+<ol>
+<li>两个人同时对一个文档进行写入，一个人写“true ==”，另一个人写 “(一个单词)”，有没有可能出现结果为 “(一个单词) == true”，说明过程</li>
+<li>？</li>
+<li>？</li>
+</ol>
+</li>
+<li>
+<p>Consistency</p>
+<ol>
+<li>？</li>
+<li>在 Partitioning 和 异步的情况下，最好的一致性模型是</li>
+<li>在 同步 和 ？的情况下，最好的一致性模型是</li>
+</ol>
+</li>
+<li>
+<p>选择，不少原题</p>
+<ol>
+<li>Faas 是无状态的，那么状态是谁保存的（有疑惑的选项是 WebServer 和 都不是，其他俩选项忘了）</li>
+</ol>
+</li>
+</ol>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.gabrielme.xyz/CUHK_CS/" class="tag">
+                    CUHK CS 课程资源
+                  </a>
+                
+              </div>
+            
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '8e52ba68bfaa8403de1e',
+        clientSecret: '65b9a40efca110a1948a2223dd5478e96f34599a',
+        repo: 'GitHubPageComment',
+        owner: 'Gabriel-1023',
+        admin: ['Gabriel-1023'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

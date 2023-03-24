@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4848497781078288" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <meta charset="utf-8" >
+
+<title>树莓派 安装Transmission并自动挂载移动硬盘 | Gabriel&#39;s</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.gabrielme.xyz/favicon.ico?v=1679651774679">
+<link rel="stylesheet" href="https://blog.gabrielme.xyz/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HL7G4PXRW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4HL7G4PXRW');
+</script>
+
+
+    <meta name="description" content="0. 硬件准备
+
+
+
+硬件
+作用
+
+
+
+
+SATA 机械硬盘 2.5寸（3.5寸）
+播种用
+
+
+移动硬盘盒 USB接口 2.5寸 （或对应3.5寸）
+转USB以便连接树莓派
+
+
+USB Micro-B 移动硬盘双头供电+数据线
+给2.5寸移..." />
+    <meta name="keywords" content="树莓派" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }" style="overflow-y: hidden;">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.gabrielme.xyz">
+        <img src="https://blog.gabrielme.xyz/images/avatar.png?v=1679651774679" class="site-logo">
+        <h1 class="site-title">Gabriel&#39;s</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/dyZJ2OBHR" class="site-nav">
+            NEU软工课程资源
+          </a>
+        
+      
+        
+          <a href="/CUHK_CS" class="site-nav">
+            CS课程资源
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="https://blog.csdn.net/weixin_43529394" class="site-nav" target="_blank">
+            CSDN
+          </a>
+        
+      
+        
+          <a href="/About" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Gabriel-1023" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      干就完了
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.gabrielme.xyz/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">树莓派 安装Transmission并自动挂载移动硬盘</h2>
+            <div class="post-date">2021-10-11</div>
+            
+            <div class="post-content" v-pre>
+              <h3 id="0-硬件准备">0. 硬件准备</h3>
+<table>
+<thead>
+<tr>
+<th>硬件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SATA 机械硬盘 2.5寸（3.5寸）</td>
+<td>播种用</td>
+</tr>
+<tr>
+<td>移动硬盘盒 USB接口 2.5寸 （或对应3.5寸）</td>
+<td>转USB以便连接树莓派</td>
+</tr>
+<tr>
+<td>USB Micro-B 移动硬盘双头供电+数据线</td>
+<td>给2.5寸移动硬盘供电，事实证明硬盘单独连树莓派并不能有效供电，若使用 3.5寸硬盘 ，购买移动硬盘盒时注意配备供电电源</td>
+</tr>
+</tbody>
+</table>
+<p>树莓派直接连接校园网网线，不需登录校园网账号即可访问六维空间等ipv6站点下载资源，下文使用的树莓派软件源也支持ipv6下载。</p>
+<p>如果不知道ip地址，可以先在树莓派存储卡内配置无线网卡连接电脑热点，在设置中查看树莓派在热点中的ip地址，使用putty登录树莓派，再用<code>ifconfig</code>命令查看校园网ip地址。</p>
+<blockquote>
+<p>如何使用树莓派连接电脑无线网络热点并查看树莓派ip地址：<a href="https://blog.csdn.net/weixin_43529394/article/details/123267629">https://blog.csdn.net/weixin_43529394/article/details/123267629</a></p>
+</blockquote>
+<h3 id="1-硬盘准备">1. 硬盘准备</h3>
+<p>需将硬盘设置为一个分区，并且格式化为<code>ext4</code>格式，NTFS格式分区在树莓派系统中不能写入内容。格式化<code>ext4</code>可使用DiskGenius软件，详细参照网上教程。</p>
+<h3 id="2-更新软件包">2. 更新软件包</h3>
+<blockquote>
+<p>更换国内软件源：<br>
+<a href="https://blog.csdn.net/weixin_43529394/article/details/113249762">树莓派 buster/stretch软件源修改 清华/北外/阿里源</a><br>
+（建议使用北外源，实测速度最快）</p>
+</blockquote>
+<p>更新软件包：</p>
+<pre><code class="language-bash">sudo apt-get upadte
+sudo apt-get upgrade
+</code></pre>
+<h3 id="4-安装配置-transmission">4. 安装配置 Transmission</h3>
+<p>安装：</p>
+<pre><code class="language-bash">sudo apt-get install transmission-daemon
+</code></pre>
+<p>配置：</p>
+<blockquote>
+<p>用树莓派搭建BT下载服务器：<br>
+<a href="https://shumeipai.nxez.com/2013/09/08/raspberry-pi-bt-download-servers.html">https://shumeipai.nxez.com/2013/09/08/raspberry-pi-bt-download-servers.html</a></p>
+</blockquote>
+<p>主要配置项有：</p>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rpc-username</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td>rpc-password</td>
+<td>密码</td>
+</tr>
+<tr>
+<td>rpc-whitelist</td>
+<td>ip访问白名单<br>（如允许所有ip访问，则值设置为空字符串即&quot;&quot;）</td>
+</tr>
+<tr>
+<td>download-dir</td>
+<td>下载目录<br>（这里可以先不改，后续在网页界面中更改）</td>
+</tr>
+<tr>
+<td>rpc-port</td>
+<td>Transmission网页端口号，如无特殊偏好，默认9091即可</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-开机自动挂载设置">3. 开机自动挂载设置</h3>
+<p>使用如下命令查看挂载项</p>
+<pre><code class="language-bash">mount
+</code></pre>
+<p>一般移动硬盘挂载项为 <code>/dev/sda1</code>，若有其他U盘设备连接，挂载项可能不是这个</p>
+<p>使用如下命令创建想要挂载硬盘的文件夹，我挂载到了/home/pi/Hard下</p>
+<pre><code class="language-bash">mkdir /home/pi/Hard
+</code></pre>
+<p>使用如下命令打开自动挂载配置文件</p>
+<pre><code class="language-bash">vim /etc/fstab
+</code></pre>
+<p>插入新的一行：</p>
+<pre><code class="language-bash">/dev/sda1      /home/pi/Hard      ext4   defaults 0 0
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>语句</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/dev/sda1</td>
+<td>要挂载的设备或伪文件系统</td>
+</tr>
+<tr>
+<td>/home/pi/Hard</td>
+<td>挂载点，此文件夹需要提前创建好</td>
+</tr>
+<tr>
+<td>ext4</td>
+<td>文件系统类型</td>
+</tr>
+<tr>
+<td>defaults</td>
+<td>挂载选项</td>
+</tr>
+<tr>
+<td>第一个0</td>
+<td>转储频率：能否被dump备份命令作用：dump是一个用来作为备份的命令。0 代表不要做dump备份，1 代表要每天进行dump的操作，2 代表不定日期的进行dump操作</td>
+</tr>
+<tr>
+<td>第一个0</td>
+<td>自检次序：是否检验扇区：开机的过程中，系统默认会以fsck检验我们系统是否为完整（clean）。0 不要检验，1 最早检验（一般根目录会选择），2 第1级别检验完成之后进行检验</td>
+</tr>
+<tr>
+<td>挂载的硬盘不需要做自建和转储，所以后两个直接选0即可，若修改为其他项，不插移动硬盘开机树莓派会进不去系统。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4最后的配置">4.最后的配置</h3>
+<p>重启树莓派，检查移动硬盘是否挂载到了正确的位置，如不正确请检查上述挂载步骤。</p>
+<p>使用如下命令查看树莓派的ip地址</p>
+<pre><code class="language-bash">ifconfig
+</code></pre>
+<p>在同一局域网下的其他电脑浏览器访问ip地址加端口号（默认9091），输入设置的用户名和密码，即可进入Transmission界面。Download to 修改下载位置，填入刚才配置好的挂载位置。其他选项可默认不动。</p>
+<figure data-type="image" tabindex="1"><img src="https://blog.gabrielme.xyz/post-images/1652271610860.png" alt="" loading="lazy"></figure>
+<p>可尝试将pt站种子上传进行下载，若出现权限不足问题，可使用如下命令对移动硬盘提权</p>
+<pre><code class="language-bash">sudo chmod 777 -R /home/pi/Hard
+</code></pre>
+<p>若下载始终不开始，请检查ipv6环境配置。<br>
+上述配置适用于六维空间和蒲公英pt分享站的种子下载和做种。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.gabrielme.xyz/-YL4a4134/" class="tag">
+                    树莓派
+                  </a>
+                
+              </div>
+            
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '8e52ba68bfaa8403de1e',
+        clientSecret: '65b9a40efca110a1948a2223dd5478e96f34599a',
+        repo: 'GitHubPageComment',
+        owner: 'Gabriel-1023',
+        admin: ['Gabriel-1023'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
