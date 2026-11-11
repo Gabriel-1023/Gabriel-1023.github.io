@@ -10,8 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://blog.gabrielme.xyz/favicon.ico?v=1679651774679">
-<link rel="stylesheet" href="https://blog.gabrielme.xyz/styles/main.css">
+<link rel="shortcut icon" href="https://gabriel-1023.github.io/favicon.ico?v=1679651774679">
+<link rel="stylesheet" href="https://gabriel-1023.github.io/styles/main.css">
 
 
   
@@ -48,8 +48,8 @@
       <div class="sidebar" :class="{ 'full-height': menuVisible }" style="overflow-y: hidden;">
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
-      <a class="site-title-container" href="https://blog.gabrielme.xyz">
-        <img src="https://blog.gabrielme.xyz/images/avatar.png?v=1679651774679" class="site-logo">
+      <a class="site-title-container" href="https://gabriel-1023.github.io">
+        <img src="https://gabriel-1023.github.io/images/avatar.png?v=1679651774679" class="site-logo">
         <h1 class="site-title">Gabriel&#39;s</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -124,7 +124,7 @@
       干就完了
     </div>
     <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.gabrielme.xyz/atom.xml" target="_blank">RSS</a>
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://gabriel-1023.github.io/atom.xml" target="_blank">RSS</a>
     </div>
   </div>
 </div>
@@ -139,10 +139,10 @@
             <div class="post-content" v-pre>
               <h1 id="1-问题提出">1. 问题提出</h1>
 <p>如果你想要预测房价，下图是一些收集的数据，横轴是房子的面积，纵轴是房子的价格。</p>
-<figure data-type="image" tabindex="1"><img src="https://blog.gabrielme.xyz/post-images/1652412973999.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://gabriel-1023.github.io/post-images/1652412973999.png" alt="" loading="lazy"></figure>
 <p>如果你的朋友有一栋 750 平方英尺的房子，他要卖掉这栋房子，想知道能卖多少钱，怎么使用算法来预测价格？</p>
 <p>如果在图中使用一条直线来拟合数据，如下图，这栋房子可以卖大约 15000 美元。</p>
-<figure data-type="image" tabindex="2"><img src="https://blog.gabrielme.xyz/post-images/1652412980576.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://gabriel-1023.github.io/post-images/1652412980576.png" alt="" loading="lazy"></figure>
 <p>这不是最好的或者唯一的方法，除了使用直线，也可能使用二次函数能更好的拟合数据，那么我们接下来要讨论的问题是如何来选择拟合数据的方法。</p>
 <h1 id="2-监督学习定义">2. 监督学习定义</h1>
 <ul>
@@ -151,12 +151,12 @@
 <h1 id="3-回归问题和分类问题">3. 回归问题和分类问题</h1>
 <p>房价的预测可以被称为：<strong>回归问题，即预测连续的数值输出。</strong></p>
 <p>下图是另一个例子，通过肿瘤（Tumor）的大小，来预测肿瘤是否为恶性（Malignant）。</p>
-<figure data-type="image" tabindex="3"><img src="https://blog.gabrielme.xyz/post-images/1652412986780.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://gabriel-1023.github.io/post-images/1652412986780.png" alt="" loading="lazy"></figure>
 <p>肿瘤恶性的预测输出值只能为 0（良性）和 1（恶性），这是另一种监督学习问题：<strong>分类问题，即预测离散的数值输出</strong>。</p>
 <p>分类问题可以有更多的输出，例如 0（良性）、 1（第一种癌症）、2（第二种癌症）等，还可以下图的方式来表示分类。其中，“o”代表良性，“×”代表恶性，与上图的表示一一对应。</p>
-<figure data-type="image" tabindex="4"><img src="https://blog.gabrielme.xyz/post-images/1652412993438.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://gabriel-1023.github.io/post-images/1652412993438.png" alt="" loading="lazy"></figure>
 <p>下图是另一个例子，通过肿瘤（Tumor）的大小和年龄（Age）两个特征，来预测肿瘤是否为恶性（Malignant）。其中，“o”代表良性，“×”代表恶性。这时我们可以用如图所示的黑色直线来区分两种类型，位于直线下方为良性肿瘤，位于上方为恶性肿瘤。</p>
-<figure data-type="image" tabindex="5"><img src="https://blog.gabrielme.xyz/post-images/1652412998167.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://gabriel-1023.github.io/post-images/1652412998167.png" alt="" loading="lazy"></figure>
 <p>预测肿瘤的分类还可以有其他特征，例如：</p>
 <ul>
 <li>肿块的厚度</li>
@@ -177,11 +177,11 @@
             
               <div class="tag-container">
                 
-                  <a href="https://blog.gabrielme.xyz/MachineLearning/" class="tag">
+                  <a href="https://gabriel-1023.github.io/MachineLearning/" class="tag">
                     机器学习
                   </a>
                 
-                  <a href="https://blog.gabrielme.xyz/jdMPAHcvw/" class="tag">
+                  <a href="https://gabriel-1023.github.io/jdMPAHcvw/" class="tag">
                     个人学习
                   </a>
                 
@@ -190,7 +190,7 @@
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://blog.gabrielme.xyz/ML-7-2/">
+                <a href="https://gabriel-1023.github.io/ML-7-2/">
                   <h3 class="post-title">
                     [机器学习] 7-2  正则化-代价函数
                   </h3>

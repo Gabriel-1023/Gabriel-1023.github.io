@@ -10,8 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://blog.gabrielme.xyz/favicon.ico?v=1679651774679">
-<link rel="stylesheet" href="https://blog.gabrielme.xyz/styles/main.css">
+<link rel="shortcut icon" href="https://gabriel-1023.github.io/favicon.ico?v=1679651774679">
+<link rel="stylesheet" href="https://gabriel-1023.github.io/styles/main.css">
 
 
   
@@ -55,8 +55,8 @@
       <div class="sidebar" :class="{ 'full-height': menuVisible }" style="overflow-y: hidden;">
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
-      <a class="site-title-container" href="https://blog.gabrielme.xyz">
-        <img src="https://blog.gabrielme.xyz/images/avatar.png?v=1679651774679" class="site-logo">
+      <a class="site-title-container" href="https://gabriel-1023.github.io">
+        <img src="https://gabriel-1023.github.io/images/avatar.png?v=1679651774679" class="site-logo">
         <h1 class="site-title">Gabriel&#39;s</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -131,7 +131,7 @@
       干就完了
     </div>
     <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.gabrielme.xyz/atom.xml" target="_blank">RSS</a>
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://gabriel-1023.github.io/atom.xml" target="_blank">RSS</a>
     </div>
   </div>
 </div>
@@ -291,9 +291,9 @@
 </code></pre>
 <h2 id="52-安装">5.2 安装</h2>
 <p>使用浏览器访问服务器的 ip 地址，即 Discuz 网站，进入 Discuz 安装阶段，同意授权协议后，显示安装环境检查界面：</p>
-<figure data-type="image" tabindex="1"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630125842375.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://gabriel-1023.github.io/post-images/Discuz/image-20220630125842375.png" alt="" loading="lazy"></figure>
 <p>如果之前步骤进行正确，除如下 mysql_connect() 函数依赖问题外，其他项目均正常。</p>
-<figure data-type="image" tabindex="2"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630125917495.png" alt="image-20220630125917495" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://gabriel-1023.github.io/post-images/Discuz/image-20220630125917495.png" alt="image-20220630125917495" loading="lazy"></figure>
 <p>下边解决 mysql_connect() 函数依赖问题，进入启动的 myphp 容器：</p>
 <pre><code class="language-bash">docker exec -it myphp bash
 </code></pre>
@@ -313,11 +313,11 @@
 <pre><code class="language-bash">docker restart mymariadb nginx myphp
 </code></pre>
 <p>重新访问 Discuz 网站，显示函数依赖已正常：</p>
-<figure data-type="image" tabindex="3"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630130226812.png" alt="image-20220630130226812" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://gabriel-1023.github.io/post-images/Discuz/image-20220630130226812.png" alt="image-20220630130226812" loading="lazy"></figure>
 <p>进入下一步，运行环境设置，笔者不太清楚两选项区别，选择了含 UCenter Server 安装，有备无患。</p>
-<figure data-type="image" tabindex="4"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630130257792.png" alt="image-20220630130257792" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://gabriel-1023.github.io/post-images/Discuz/image-20220630130257792.png" alt="image-20220630130257792" loading="lazy"></figure>
 <p>进入下一步，安装数据库：</p>
-<figure data-type="image" tabindex="5"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630130842881.png" alt="image-20220630130842881" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://gabriel-1023.github.io/post-images/Discuz/image-20220630130842881.png" alt="image-20220630130842881" loading="lazy"></figure>
 <p><strong>参数解释</strong></p>
 <p>数据库服务器地址： <code>db</code> ，即第 3 节 PHP 安装中连接 mymariadb 容器设置的别名 <code>db</code></p>
 <p>数据库用户名：root，即默认</p>
@@ -326,11 +326,11 @@
 <p>其他信息根据自身情况填写即可。点击下一步之后自动安装，片刻即好，之后可进入 Discuz 网站，使用安装过程填写的管理员信息登录（初次可设置验证问题提高账户安全性）。</p>
 <h2 id="53-gd图像处理软件安装">5.3 GD图像处理软件安装</h2>
 <p>此时网站还存在一个问题，在 Discuz 后台的全局-&gt;上传设置，点击“预览略缩图效果”，会显示如下错误：</p>
-<figure data-type="image" tabindex="6"><img src="https://blog.gabrielme.xyz/post-images/Discuz/1534602779361008433.png" alt="服务器缺少处理图片所需的功能，无法处理" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://gabriel-1023.github.io/post-images/Discuz/1534602779361008433.png" alt="服务器缺少处理图片所需的功能，无法处理" loading="lazy"></figure>
 <p>从下图位置进入管理中心，使用管理员账号登录后台：</p>
-<figure data-type="image" tabindex="7"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630131611138.png" alt="image-20220630131611138" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://gabriel-1023.github.io/post-images/Discuz/image-20220630131611138.png" alt="image-20220630131611138" loading="lazy"></figure>
 <p>首页会显示如下警告：</p>
-<figure data-type="image" tabindex="8"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630131811313.png" alt="image-20220630131811313" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://gabriel-1023.github.io/post-images/Discuz/image-20220630131811313.png" alt="image-20220630131811313" loading="lazy"></figure>
 <p>下边安装 GD ，进入 myphp 容器：</p>
 <pre><code class="language-bash">docker exec -it myphp bash
 </code></pre>
@@ -344,9 +344,9 @@
 <pre><code class="language-bash">cat /etc/os-release
 </code></pre>
 <p>显示如下信息，说明容器内的环境为 Debian buster 10。</p>
-<figure data-type="image" tabindex="9"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630132536956.png" alt="image-20220630132536956" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://gabriel-1023.github.io/post-images/Discuz/image-20220630132536956.png" alt="image-20220630132536956" loading="lazy"></figure>
 <p>打开清华大学镜像网站<code>https://mirrors.tuna.tsinghua.edu.cn/help/debian/</code>，找到对应版本的国内源：</p>
-<figure data-type="image" tabindex="10"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630132642952.png" alt="image-20220630132642952" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://gabriel-1023.github.io/post-images/Discuz/image-20220630132642952.png" alt="image-20220630132642952" loading="lazy"></figure>
 <p>复制网页下方代码，Debian buster如下：</p>
 <pre><code class="language-bash"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
 deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
@@ -386,7 +386,7 @@ deb https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main con
 <pre><code class="language-bash">php -m | grep gd
 </code></pre>
 <p>显示 gd 即表示安装成功：</p>
-<figure data-type="image" tabindex="11"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630134151984.png" alt="image-20220630134151984" loading="lazy"></figure>
+<figure data-type="image" tabindex="11"><img src="https://gabriel-1023.github.io/post-images/Discuz/image-20220630134151984.png" alt="image-20220630134151984" loading="lazy"></figure>
 <p>退出容器：</p>
 <pre><code class="language-bash">exit
 </code></pre>
@@ -394,9 +394,9 @@ deb https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main con
 <pre><code class="language-bash">docker restart mymariadb nginx myphp
 </code></pre>
 <p>重新登录 Discuz 后台后，运行环境检测显示一切正常：</p>
-<figure data-type="image" tabindex="12"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630134340548.png" alt="image-20220630134340548" loading="lazy"></figure>
+<figure data-type="image" tabindex="12"><img src="https://gabriel-1023.github.io/post-images/Discuz/image-20220630134340548.png" alt="image-20220630134340548" loading="lazy"></figure>
 <p>略缩图预览正常：</p>
-<figure data-type="image" tabindex="13"><img src="https://blog.gabrielme.xyz/post-images/Discuz/image-20220630134647408.png" alt="image-20220630134647408" loading="lazy"></figure>
+<figure data-type="image" tabindex="13"><img src="https://gabriel-1023.github.io/post-images/Discuz/image-20220630134647408.png" alt="image-20220630134647408" loading="lazy"></figure>
 <h2 id="54-附件上传失败问题">5.4 附件上传失败问题</h2>
 <p>换比较小的文件试试，需要修改 php 最大上传大小，docker 里边不是修改 php.ini，先挖个坑，以后补方法。</p>
 <h2 id="55-域名-https-ssl-配置">5.5 域名 HTTPS SSL 配置</h2>
@@ -473,7 +473,7 @@ https://你的网址/uc_server</p>
             
               <div class="tag-container">
                 
-                  <a href="https://blog.gabrielme.xyz/ApctfAbqI/" class="tag">
+                  <a href="https://gabriel-1023.github.io/ApctfAbqI/" class="tag">
                     其他
                   </a>
                 
@@ -482,7 +482,7 @@ https://你的网址/uc_server</p>
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://blog.gabrielme.xyz/ML-16-3/">
+                <a href="https://gabriel-1023.github.io/ML-16-3/">
                   <h3 class="post-title">
                     [机器学习] 16-3 推荐系统-协同过滤
                   </h3>
